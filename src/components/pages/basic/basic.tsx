@@ -29,6 +29,7 @@ export const CreateBasic = (props: CreateBasicType) => {
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
   const [update, setUpdate] = useState(false);
+  const [userId, setUserId] = useState("") 
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -72,7 +73,9 @@ export const CreateBasic = (props: CreateBasicType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("id_photo", idPhoto);
     data.append("first_name_kanji", first_kanji);
     data.append("last_name_kanji", last_kanji);

@@ -21,7 +21,8 @@ type RegisteredPageDetailType = {
 };
 
 export const RegisteredPageDetail = (props: RegisteredPageDetailType) => {
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const navigate = useNavigate();
 

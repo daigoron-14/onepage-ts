@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 type VideoCardType = {
-  title: string;
+  title?: string;
   id: string;
   setValue: Function;
   value: boolean;

@@ -24,7 +24,9 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("extra_file", video);
     data.append("extra_title", title);
     data.append("extra_get", get);

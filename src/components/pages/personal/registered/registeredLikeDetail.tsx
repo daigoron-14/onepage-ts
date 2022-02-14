@@ -20,7 +20,8 @@ export const RegisteredLikeDetail = (props: CreateLikeType) => {
   const [image, setImage] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -52,7 +53,9 @@ export const RegisteredLikeDetail = (props: CreateLikeType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("like_name", like);
     data.append("like_text", text);
     data.append("like_image", image);

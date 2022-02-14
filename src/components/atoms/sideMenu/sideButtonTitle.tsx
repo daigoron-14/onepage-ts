@@ -3,17 +3,19 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { Link } from "react-router-dom";
 
-type SideButtonHideType = {
+type SideButtonTitleType = {
   title: string;
   listStyle: string;
   iconFlag: boolean;
   link: string;
   classnamePull: string;
   classnameTitle: string;
+  setValue: Function;
+  value: boolean;
   flag: boolean;
 };
 
-export const SideButtonHide = (props: SideButtonHideType) => {
+export const SideButtonTitle = (props: SideButtonTitleType) => {
   const {
     title,
     listStyle,
@@ -21,11 +23,19 @@ export const SideButtonHide = (props: SideButtonHideType) => {
     link,
     classnamePull,
     classnameTitle,
+    setValue,
+    value,
     flag
   } = props;
 
+  const pullDown = () => {
+    if (flag) {
+      setValue(!value);
+    }
+  };
+
   return (
-    <SideHide className="sideHide-visible" >
+    <SideHide className="sideHide-visible" onClick={pullDown}>
       <div className={classnamePull}>
         <div className="sideHide-container">
           <ul className="sideHide-containt">

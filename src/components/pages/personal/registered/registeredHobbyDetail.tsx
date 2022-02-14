@@ -20,7 +20,8 @@ export const RegisteredHobbyDetail = (props: CreateHobbyType) => {
   const [good, setGood] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -51,7 +52,9 @@ export const RegisteredHobbyDetail = (props: CreateHobbyType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("hobby_name", name);
     data.append("hobby_start", start);
     data.append("hobby_good", good);

@@ -9,6 +9,7 @@ import { SelectDay } from "../../../atoms/create/selectDay";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AnySrvRecord } from "dns";
 
 type CreateChronologyType = {
   setColor: Function;
@@ -26,8 +27,8 @@ export const RegisteredChronologyDetail = (props: CreateChronologyType) => {
   const [get, setGet] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
-
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -35,7 +36,7 @@ export const RegisteredChronologyDetail = (props: CreateChronologyType) => {
   useEffect(() => {
     setColor("chronoN");
 
-    if (state == null) {
+    if (state == 0) {
       navigate("/dashboard/registered/chronology");
     } else {
       axios
@@ -63,7 +64,9 @@ export const RegisteredChronologyDetail = (props: CreateChronologyType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("chrono_image", image);
     data.append("chrono_title", title);
     data.append("chrono_year", year);

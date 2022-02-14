@@ -20,7 +20,8 @@ export const RegisteredStressDetail = (props: CreateStressType) => {
   const [relux, setRelux] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -51,7 +52,9 @@ export const RegisteredStressDetail = (props: CreateStressType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("stress_name", name);
     data.append("stress_reason", reason);
     data.append("stress_relux", relux);

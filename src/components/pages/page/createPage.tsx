@@ -23,8 +23,6 @@ import { CompanyName } from "../../atoms/page/create/companyName";
 
 type CreatePageType = {
   setColor: Function;
-  setMotivRegFlag: Function;
-  setSelfRegFlag: Function;
   motivRegFlag: boolean;
   selfRegFlag: boolean;
   frustRegFlag: boolean;
@@ -44,25 +42,25 @@ type CreatePageType = {
   hobbyRegFlag: boolean;
   stressRegFlag: boolean;
   talentRegFlag: boolean;
-  selfproduceId: number;
-  motivationId: number;
-  frustrationId: number;
-  extracurricularId: number;
-  interviewId: number;
-  otherId1: number;
-  otherId2: number;
-  otherId3: number;
-  chronoId1: number;
-  chronoId2: number;
-  chronoId3: number;
-  chronoId4: number;
-  chronoId5: number;
-  likeId1: number;
-  likeId2: number;
-  likeId3: number;
-  hobbyId: number;
-  stressId: number;
-  talentId: number;
+  selfproduceId: string;
+  motivationId: string;
+  frustrationId: string;
+  extracurricularId: string;
+  interviewId: string;
+  otherId1: string;
+  otherId2: string;
+  otherId3: string;
+  chronoId1: string;
+  chronoId2: string;
+  chronoId3: string;
+  chronoId4: string;
+  chronoId5: string;
+  likeId1: string;
+  likeId2: string;
+  likeId3: string;
+  hobbyId: string;
+  stressId: string;
+  talentId: string;
 };
 
 export const CreatePage = (props: CreatePageType) => {
@@ -87,7 +85,6 @@ export const CreatePage = (props: CreatePageType) => {
     hobbyRegFlag,
     stressRegFlag,
     talentRegFlag,
-
     selfproduceId,
     motivationId,
     extracurricularId,

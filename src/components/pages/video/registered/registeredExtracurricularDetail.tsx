@@ -25,7 +25,8 @@ export const RegisteredExtracurricularDetail = (
   const [text, setText] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -58,7 +59,9 @@ export const RegisteredExtracurricularDetail = (
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("extra_file", video);
     data.append("extra_title", title);
     data.append("extra_get", sub);

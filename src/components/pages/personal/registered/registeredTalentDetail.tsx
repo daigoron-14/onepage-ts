@@ -20,7 +20,8 @@ export const RegisteredTalentDetail = (props: CreateTalentType) => {
   const [event, setEvent] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -51,7 +52,9 @@ export const RegisteredTalentDetail = (props: CreateTalentType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("talent_name", name);
     data.append("talent_text", text);
     data.append("talent_event", event);

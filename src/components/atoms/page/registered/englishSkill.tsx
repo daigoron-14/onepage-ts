@@ -57,11 +57,7 @@ export const EnglishSkill = (props: EnglishSkillType) => {
   return (
     <EnglishSkills>
       <div
-        className={
-          (title === "TOEIC" && "english-toeic") ||
-          (title === "TOEFL" && "english-toefl")
-        }
-      >
+        className={`english-${title}`}>
         <div className="english">
           <h4 className="english-title">{title}</h4>
           {score === "" ? (
@@ -97,7 +93,7 @@ const EnglishSkills = styled.div`
     align-items: center;
     justify-content: center;
 
-    &-toeic {
+    &-TOEIC {
       width: 100%;
       height: 100%;
       border-radius: 0.75rem;
@@ -108,7 +104,7 @@ const EnglishSkills = styled.div`
       );
     }
 
-    &-toefl {
+    &-TOEFL {
       width: 100%;
       height: 100%;
       border-radius: 0.75rem;

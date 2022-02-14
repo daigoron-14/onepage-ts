@@ -25,7 +25,9 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("selfproduce_file", video);
     data.append("selfproduce_title", title);
     data.append("selfproduce_strength", strength);

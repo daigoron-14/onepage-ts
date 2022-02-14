@@ -25,7 +25,9 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("frustration_file", video);
     data.append("frustration_title", title);
     data.append("frustration_event", event);

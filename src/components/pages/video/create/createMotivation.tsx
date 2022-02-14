@@ -25,7 +25,9 @@ export const CreateMotivation = (props: CreateMotivationType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("motivation_file", video);
     data.append("motivation_title", title);
     data.append("motivation_company", company);

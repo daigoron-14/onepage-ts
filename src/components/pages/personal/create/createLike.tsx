@@ -23,7 +23,9 @@ export const CreateLike = (props: CreateLikeType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("like_image", image);
     data.append("like_name", like);
     data.append("like_text", text);

@@ -24,7 +24,9 @@ export const CreateInterview = (props: CreateInterviewType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("interview_file", video);
     data.append("interview_title", title);
     data.append("interview_relationship", relationship);

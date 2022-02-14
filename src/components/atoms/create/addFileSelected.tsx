@@ -17,7 +17,7 @@ export const AddFileSelected = (props: AddFileType) => {
   useEffect(() => {}, []);
 
   const OnChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files.length != 0) {
+    if (e.target.files != null) {
       const imageFile = e.target.files[0];
       setImagePreview(URL.createObjectURL(imageFile));
       setValue(imageFile);

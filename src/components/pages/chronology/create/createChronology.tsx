@@ -30,7 +30,9 @@ export const CreateChronology = (props: CreateChronologyType) => {
   const createData = () => {
     console.log(image);
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("chrono_image", image);
     data.append("chrono_title", title);
     data.append("chrono_year", year);

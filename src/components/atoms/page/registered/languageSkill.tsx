@@ -69,13 +69,7 @@ export const LanguageSkill = (props: LanguageSkillType) => {
           </div>
         </div>
       ) : (
-        <div
-          className={
-            (level === "日常会話レベル" && "language-level-1") ||
-            (level === "ビジネスレベル" && "language-level-2") ||
-            (level === "ネイティブレベル" && "language-level-3")
-          }
-        >
+        <div className={`language-level-${level}`}>
           {indonesia ? (
             <div className="language-indonesia">
               <h4 className="language-indonesia-title">{title}</h4>
@@ -104,7 +98,7 @@ const LanguageSkills = styled.div`
 
   .language {
     &-level {
-      &-0 {
+      &-日常会話レベル {
         width: 100%;
         height: 100%;
         background: linear-gradient(
@@ -115,7 +109,7 @@ const LanguageSkills = styled.div`
         border-radius: 0.75rem;
       }
 
-      &-1 {
+      &-日常会話レベル {
         width: 100%;
         height: 100%;
         background: linear-gradient(
@@ -126,7 +120,7 @@ const LanguageSkills = styled.div`
         border-radius: 0.75rem;
       }
 
-      &-2 {
+      &-ビジネスレベル {
         width: 100%;
         height: 100%;
         background: linear-gradient(
@@ -137,7 +131,7 @@ const LanguageSkills = styled.div`
         border-radius: 0.75rem;
       }
 
-      &-3 {
+      &-ネイティブレベル {
         width: 100%;
         height: 100%;
         background: linear-gradient(

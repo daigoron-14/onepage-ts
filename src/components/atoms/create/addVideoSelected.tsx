@@ -16,7 +16,7 @@ export const AddVideoSelected = (props: AddFileType) => {
   const [play, setPlay] = useState(false);
 
   const OnChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files.length != 0) {
+    if (e.target.files != null) {
       const videoFile = e.target.files[0];
       setVideoPreview(URL.createObjectURL(videoFile));
       setValue(videoFile);

@@ -11,6 +11,7 @@ import { SideMenuTile } from "../atoms/sideMenu/sideMenuTitle";
 import { SideButton } from "../atoms/sideMenu/sideButton";
 import { SideButtonHide } from "../atoms/sideMenu/sideButtonHide";
 import { SideButtonPage } from "../atoms/sideMenu/sideButtonPage";
+import { SideButtonTitle } from "../atoms/sideMenu/sideButtonTitle"
 
 import { useState, useEffect, memo, useContext } from "react";
 import { PersonalCard } from "../atoms/page/registered/personalCard";
@@ -95,7 +96,7 @@ export const SideMenu = memo((props: SideMenuType) => {
               : "list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="基礎情報"
           listStyle="sideHide-item"
           iconFlag={false}
@@ -110,7 +111,7 @@ export const SideMenu = memo((props: SideMenuType) => {
           value={basicN}
           flag={true}
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="住所情報"
           listStyle="sideHide-item"
           iconFlag={false}
@@ -125,7 +126,7 @@ export const SideMenu = memo((props: SideMenuType) => {
           value={basicN}
           flag={true}
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="学歴情報"
           listStyle="sideHide-item"
           iconFlag={false}
@@ -155,7 +156,7 @@ export const SideMenu = memo((props: SideMenuType) => {
               : "list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="資格・免許"
           listStyle="sideHide-item"
           iconFlag={false}
@@ -170,7 +171,7 @@ export const SideMenu = memo((props: SideMenuType) => {
             color === "qualiN" ? "sideHide-list-color" : "sideHide-list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="言語スキル"
           listStyle="sideHide-item"
           iconFlag={false}
@@ -204,7 +205,7 @@ export const SideMenu = memo((props: SideMenuType) => {
               : "list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="登録済み"
           listStyle="sideHide-item"
           iconFlag={true}
@@ -284,7 +285,7 @@ export const SideMenu = memo((props: SideMenuType) => {
             color === "talentR" ? "sideHide-list-color" : "sideHide-list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="新規作成"
           listStyle="sideHide-item"
           iconFlag={true}
@@ -385,7 +386,7 @@ export const SideMenu = memo((props: SideMenuType) => {
               : "list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="登録済み"
           listStyle="sideHide-item"
           iconFlag={true}
@@ -471,7 +472,7 @@ export const SideMenu = memo((props: SideMenuType) => {
             color === "interviewR" ? "sideHide-list-color" : "sideHide-list"
           }
         />
-        <SideButtonHide
+        <SideButtonTitle
           title="新規作成"
           listStyle="sideHide-item"
           iconFlag={true}

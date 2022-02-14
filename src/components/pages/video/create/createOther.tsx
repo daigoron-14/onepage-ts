@@ -24,7 +24,9 @@ export const CreateOther = (props: CreateOtherType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("other_file", video);
     data.append("other_title", title);
     data.append("other_label", label);

@@ -23,7 +23,8 @@ export const RegisteredInterviewDetail = (props: CreateChronologyType) => {
   const [text, setText] = useState("");
 
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as any
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -56,7 +57,9 @@ export const RegisteredInterviewDetail = (props: CreateChronologyType) => {
 
   const createData = () => {
     const data = new FormData();
-    data.append("user", userid);
+    if (userid != null) {
+      data.append("user", userid);
+    }
     data.append("interview_file", video);
     data.append("interview_title", title);
     data.append("interview_relationship", sub);
