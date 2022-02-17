@@ -28,14 +28,14 @@ export const SignIn = () => {
     };
 
     axios
-      .post("http://18.177.2.6/auth/", data)
+      .post("https://onepage-server.com/auth/", data)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setEmailError("");
         console.log(localStorage.getItem("token"));
         console.log(res.data);
         axios
-          .get("http://18.177.2.6/onepage/myself/", {
+          .get("https://onepage-server.com/onepage/myself/", {
             headers: {
               Authorization: `Token ${localStorage.getItem("token")}`
             }
