@@ -33,7 +33,7 @@ export const CreateInterview = (props: CreateInterviewType) => {
     data.append("interview_text", text);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/interview/", data, {
+      .post("https://onepage-server.com/onepage/interview/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

@@ -34,7 +34,7 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
     data.append("frustration_text", text);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/frustration/", data, {
+      .post("https://onepage-server.com/onepage/frustration/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

@@ -27,7 +27,7 @@ export const CreateAddress = (props: CreateAddressType) => {
     setColor("addressN");
 
     axios
-      .get("http://127.0.0.1:8000/onepage/address/", {
+      .get("https://onepage-server.com/onepage/address/", {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -63,7 +63,7 @@ export const CreateAddress = (props: CreateAddressType) => {
 
     if (update === false) {
       axios
-        .post("http://127.0.0.1:8000/onepage/address/", data, {
+        .post("https://onepage-server.com/onepage/address/", data, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -76,7 +76,7 @@ export const CreateAddress = (props: CreateAddressType) => {
         });
     } else {
       axios
-        .put(`http://127.0.0.1:8000/onepage/address/${userid}/`, data, {
+        .put(`https://onepage-server.com/onepage/address/${userid}/`, data, {
           headers: {
             Authorization: `Token ${token}`
           }

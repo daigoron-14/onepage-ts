@@ -33,7 +33,7 @@ export const RegisteredHobbyDetail = (props: CreateHobbyType) => {
       navigate("/dashboard/registered/hobby");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/hobbyd/${state.hobby_id}/`, {
+        .get(`https://onepage-server.com/onepage/hobbyd/${state.hobby_id}/`, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -62,7 +62,7 @@ export const RegisteredHobbyDetail = (props: CreateHobbyType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/hobbyd/${state.hobby_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/hobbyd/${state.hobby_id}/`, data, {
         headers: {
           Authorization: `Token ${token}`
         }

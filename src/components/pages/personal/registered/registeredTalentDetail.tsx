@@ -33,7 +33,7 @@ export const RegisteredTalentDetail = (props: CreateTalentType) => {
       navigate("/dashboard/registered/talent");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/talentd/${state.talent_id}/`, {
+        .get(`https://onepage-server.com/onepage/talentd/${state.talent_id}/`, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -62,7 +62,7 @@ export const RegisteredTalentDetail = (props: CreateTalentType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/talentd/${state.talent_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/talentd/${state.talent_id}/`, data, {
         headers: {
           Authorization: `Token ${token}`
         }

@@ -38,7 +38,7 @@ export const RegisteredExtracurricularDetail = (
       navigate("/dashboard/registered/extracurricular");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/extra/${state.extra_id}/`, {
+        .get(`https://onepage-server.com/onepage/extra/${state.extra_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -70,7 +70,7 @@ export const RegisteredExtracurricularDetail = (
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/extra/${state.extra_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/extra/${state.extra_id}/`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

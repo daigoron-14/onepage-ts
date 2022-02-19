@@ -36,7 +36,7 @@ export const RegisteredFrustrationDetail = (props: CreateChronologyType) => {
       navigate("/dashboard/registered/frustration");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/frust/${state.frustration_id}/`, {
+        .get(`https://onepage-server.com/onepage/frust/${state.frustration_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -69,7 +69,7 @@ export const RegisteredFrustrationDetail = (props: CreateChronologyType) => {
 
     axios
       .put(
-        `http://127.0.0.1:8000/onepage/frust/${state.frustration_id}/`,
+        `https://onepage-server.com/onepage/frust/${state.frustration_id}/`,
         data,
         {
           headers: {

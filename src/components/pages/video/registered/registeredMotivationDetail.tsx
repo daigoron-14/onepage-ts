@@ -36,7 +36,7 @@ export const RegisteredMotivationDetail = (props: CreateChronologyType) => {
       navigate("/dashboard/registered/motivation");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/motiv/${state.motivation_id}/`, {
+        .get(`https://onepage-server.com/onepage/motiv/${state.motivation_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -69,7 +69,7 @@ export const RegisteredMotivationDetail = (props: CreateChronologyType) => {
 
     axios
       .put(
-        `http://127.0.0.1:8000/onepage/motiv/${state.motivation_id}/`,
+        `https://onepage-server.com/onepage/motiv/${state.motivation_id}/`,
         data,
         {
           headers: {

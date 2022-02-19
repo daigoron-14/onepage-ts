@@ -33,7 +33,7 @@ export const CreateOther = (props: CreateOtherType) => {
     data.append("other_text", text);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/other/", data, {
+      .post("https://onepage-server.com/onepage/other/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

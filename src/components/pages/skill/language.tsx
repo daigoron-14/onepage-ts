@@ -35,7 +35,7 @@ export const CreateLanguage = (props: CreateLanguageType) => {
     setColor("languageN");
 
     axios
-      .get("http://127.0.0.1:8000/onepage/language/", {
+      .get("https://onepage-server.com/onepage/language/", {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -79,7 +79,7 @@ export const CreateLanguage = (props: CreateLanguageType) => {
 
     if (update === false) {
       axios
-        .post("http://127.0.0.1:8000/onepage/language/", data, {
+        .post("https://onepage-server.com/onepage/language/", data, {
           headers: {
             Authorization: `Token ${token}`
           }

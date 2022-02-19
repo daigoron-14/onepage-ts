@@ -38,7 +38,7 @@ export const CreateBasic = (props: CreateBasicType) => {
     setColor("basicN");
 
     axios
-      .get("http://127.0.0.1:8000/onepage/basic/", {
+      .get("https://onepage-server.com/onepage/basic/", {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -90,7 +90,7 @@ export const CreateBasic = (props: CreateBasicType) => {
 
     if (update === false) {
       axios
-        .post("http://127.0.0.1:8000/onepage/basic/", data, {
+        .post("https://onepage-server.com/onepage/basic/", data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -104,7 +104,7 @@ export const CreateBasic = (props: CreateBasicType) => {
         });
     } else {
       axios
-        .put(`http://127.0.0.1:8000/onepage/basic/${userid}/`, data, {
+        .put(`https://onepage-server.com/onepage/basic/${userid}/`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`

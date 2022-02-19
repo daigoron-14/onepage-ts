@@ -36,7 +36,7 @@ export const RegisteredInterviewDetail = (props: CreateChronologyType) => {
       navigate("/dashboard/registered/extracurricular");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/inter/${state.interview_id}/`, {
+        .get(`https://onepage-server.com/onepage/inter/${state.interview_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -68,7 +68,7 @@ export const RegisteredInterviewDetail = (props: CreateChronologyType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/inter/${state.interview_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/inter/${state.interview_id}/`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

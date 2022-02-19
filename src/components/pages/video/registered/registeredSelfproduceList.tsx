@@ -64,7 +64,7 @@ export const RegisteredSelfproduceList = (props: RegisterdVideoType) => {
     setColor("selfproduceR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/selfproduce/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/selfproduce/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -192,7 +192,7 @@ export const RegisteredSelfproduceList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/self/${props}/`, {
+      .get(`https://onepage-server.com/onepage/self/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

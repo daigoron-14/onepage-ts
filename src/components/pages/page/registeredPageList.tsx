@@ -46,7 +46,7 @@ export const RegisteredPageList = (props: RegisterdHobbyType) => {
     setColor("pageR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/pageu/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/pageu/?page=${page}`, {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -143,7 +143,7 @@ export const RegisteredPageList = (props: RegisterdHobbyType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/paged/${props}/`, {
+      .get(`https://onepage-server.com/onepage/paged/${props}/`, {
         headers: {
           Authorization: `Token ${token}`
         }

@@ -64,7 +64,7 @@ export const RegisteredExtracurricularList = (props: RegisterdVideoType) => {
     setColor("extraR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/extracurricular/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/extracurricular/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -192,7 +192,7 @@ export const RegisteredExtracurricularList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/extra/${props}/`, {
+      .get(`https://onepage-server.com/onepage/extra/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

@@ -64,7 +64,7 @@ export const RegisteredMotivationList = (props: RegisterdVideoType) => {
     setColor("motivationR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/motivation/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/motivation/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -192,7 +192,7 @@ export const RegisteredMotivationList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/motiv/${props}/`, {
+      .get(`https://onepage-server.com/onepage/motiv/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

@@ -36,7 +36,7 @@ export const RegisteredOtherDetail = (props: CreateChronologyType) => {
       navigate("/dashboard/registered/other");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/otherd/${state.other_id}/`, {
+        .get(`https://onepage-server.com/onepage/otherd/${state.other_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -68,7 +68,7 @@ export const RegisteredOtherDetail = (props: CreateChronologyType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/otherd/${state.other_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/otherd/${state.other_id}/`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

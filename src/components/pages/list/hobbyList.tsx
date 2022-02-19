@@ -45,7 +45,7 @@ export const HobbyList = (props: RegisterdHobbyType) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/hobby/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/hobby/?page=${page}`, {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -142,7 +142,7 @@ export const HobbyList = (props: RegisterdHobbyType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/hobbyd/${props}/`, {
+      .get(`https://onepage-server.com/onepage/hobbyd/${props}/`, {
         headers: {
           Authorization: `Token ${token}`
         }

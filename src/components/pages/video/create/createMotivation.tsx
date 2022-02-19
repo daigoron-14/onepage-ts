@@ -34,7 +34,7 @@ export const CreateMotivation = (props: CreateMotivationType) => {
     data.append("motivation_text", text);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/motivation/", data, {
+      .post("https://onepage-server.com/onepage/motivation/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

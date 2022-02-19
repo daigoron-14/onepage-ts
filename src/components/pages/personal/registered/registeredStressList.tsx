@@ -46,7 +46,7 @@ export const RegisteredStressList = (props: RegisterdStressType) => {
     setColor("stressR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/stress/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/stress/?page=${page}`, {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -143,7 +143,7 @@ export const RegisteredStressList = (props: RegisterdStressType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/stressd/${props}/`, {
+      .get(`https://onepage-server.com/onepage/stressd/${props}/`, {
         headers: {
           Authorization: `Token ${token}`
         }

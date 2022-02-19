@@ -23,7 +23,7 @@ export const SignUp = () => {
       setRePasswordError("");
 
       axios
-        .post("http://127.0.0.1:8000/onepage/user/", data)
+        .post("https://onepage-server.com/onepage/user/", data)
         .then((res) => {
           console.log("response body:", res.data);
           setRePasswordError("");

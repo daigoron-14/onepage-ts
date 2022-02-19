@@ -44,7 +44,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
     console.log(data);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/chronology/", data, {
+      .post("https://onepage-server.com/onepage/chronology/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

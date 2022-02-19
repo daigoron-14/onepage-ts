@@ -30,7 +30,7 @@ export const CreateStress = (props: CreateStressType) => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/onepage/stress/", data, {
+      .post("https://onepage-server.com/onepage/stress/", data, {
         headers: {
           Authorization: `Token ${token}`
         }

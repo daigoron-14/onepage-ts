@@ -30,7 +30,7 @@ export const CreateHobby = (props: CreateHobbyType) => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/onepage/hobby/", data, {
+      .post("https://onepage-server.com/onepage/hobby/", data, {
         headers: {
           Authorization: `Token ${token}`
         }

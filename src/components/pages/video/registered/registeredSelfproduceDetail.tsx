@@ -36,7 +36,7 @@ export const RegisteredSelfproduceDetail = (props: CreateChronologyType) => {
       navigate("/dashboard/registered/selfproduce");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/self/${state.selfproduce_id}/`, {
+        .get(`https://onepage-server.com/onepage/self/${state.selfproduce_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -69,7 +69,7 @@ export const RegisteredSelfproduceDetail = (props: CreateChronologyType) => {
 
     axios
       .put(
-        `http://127.0.0.1:8000/onepage/self/${state.selfproduce_id}/`,
+        `https://onepage-server.com/onepage/self/${state.selfproduce_id}/`,
         data,
         {
           headers: {

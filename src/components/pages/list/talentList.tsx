@@ -47,7 +47,7 @@ export const TalentList = (props: RegisterdTalentType) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/talent/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/talent/?page=${page}`, {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -144,7 +144,7 @@ export const TalentList = (props: RegisterdTalentType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/talentd/${props}/`, {
+      .get(`https://onepage-server.com/onepage/talentd/${props}/`, {
         headers: {
           Authorization: `Token ${token}`
         }

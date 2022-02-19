@@ -65,7 +65,7 @@ export const RegisteredPageDetail = (props: RegisteredPageDetailType) => {
       navigate("/dashboard/registered/page");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/paged/${state.page_id}/`, {
+        .get(`https://onepage-server.com/onepage/paged/${state.page_id}/`, {
           headers: {
             Authorization: `Token ${token}`
           }

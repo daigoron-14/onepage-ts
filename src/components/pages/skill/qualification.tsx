@@ -38,7 +38,7 @@ export const CreateQualification = (props: CreateQualificationType) => {
     setColor("qualiN");
 
     axios
-      .get("http://127.0.0.1:8000/onepage/qualification/", {
+      .get("https://onepage-server.com/onepage/qualification/", {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -92,7 +92,7 @@ export const CreateQualification = (props: CreateQualificationType) => {
 
     if (update === false) {
       axios
-        .post("http://127.0.0.1:8000/onepage/qualification/", data, {
+        .post("https://onepage-server.com/onepage/qualification/", data, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -105,7 +105,7 @@ export const CreateQualification = (props: CreateQualificationType) => {
         });
     } else {
       axios
-        .put(`http://127.0.0.1:8000/onepage/qualification/${userid}/`, data, {
+        .put(`https://onepage-server.com/onepage/qualification/${userid}/`, data, {
           headers: {
             Authorization: `Token ${token}`
           }

@@ -33,7 +33,7 @@ export const CreateEducation = (props: CreateEducationType) => {
     setColor("educationN");
 
     axios
-      .get("http://127.0.0.1:8000/onepage/education/", {
+      .get("https://onepage-server.com/onepage/education/", {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -77,7 +77,7 @@ export const CreateEducation = (props: CreateEducationType) => {
 
     if (update === false) {
       axios
-        .post("http://127.0.0.1:8000/onepage/education/", data, {
+        .post("https://onepage-server.com/onepage/education/", data, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -90,7 +90,7 @@ export const CreateEducation = (props: CreateEducationType) => {
         });
     } else {
       axios
-        .put(`http://127.0.0.1:8000/onepage/education/${userid}/`, data, {
+        .put(`https://onepage-server.com/onepage/education/${userid}/`, data, {
           headers: {
             Authorization: `Token ${token}`
           }

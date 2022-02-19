@@ -56,7 +56,7 @@ export const FrustrationList = (props: RegisterdVideoType) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/frustration/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/frustration/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -184,7 +184,7 @@ export const FrustrationList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/frust/${props}/`, {
+      .get(`https://onepage-server.com/onepage/frust/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

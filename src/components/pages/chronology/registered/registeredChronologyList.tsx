@@ -69,7 +69,7 @@ export const RegisteredChronologyList = (props: RegisterdChronologyType) => {
     setColor("chronoR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/chronology/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/chronology/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -212,7 +212,7 @@ export const RegisteredChronologyList = (props: RegisterdChronologyType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/chrono/${props}/`, {
+      .get(`https://onepage-server.com/onepage/chrono/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

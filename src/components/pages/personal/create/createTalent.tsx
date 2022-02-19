@@ -30,7 +30,7 @@ export const CreateTalent = (props: CreateTalentType) => {
     };
 
     axios
-      .post("http://127.0.0.1:8000/onepage/talent/", data, {
+      .post("https://onepage-server.com/onepage/talent/", data, {
         headers: {
           Authorization: `Token ${token}`
         }

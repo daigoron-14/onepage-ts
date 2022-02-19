@@ -31,7 +31,7 @@ export const CreateLike = (props: CreateLikeType) => {
     data.append("like_text", text);
 
     axios
-      .post("http://127.0.0.1:8000/onepage/like/", data, {
+      .post("https://onepage-server.com/onepage/like/", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

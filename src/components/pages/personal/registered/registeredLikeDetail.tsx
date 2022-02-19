@@ -33,7 +33,7 @@ export const RegisteredLikeDetail = (props: CreateLikeType) => {
       navigate("/dashboard/registered/like");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/liked/${state.like_id}/`, {
+        .get(`https://onepage-server.com/onepage/liked/${state.like_id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -63,7 +63,7 @@ export const RegisteredLikeDetail = (props: CreateLikeType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/liked/${state.like_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/liked/${state.like_id}/`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

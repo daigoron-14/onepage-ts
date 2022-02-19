@@ -33,7 +33,7 @@ export const RegisteredStressDetail = (props: CreateStressType) => {
       navigate("/dashboard/registered/stress");
     } else {
       axios
-        .get(`http://127.0.0.1:8000/onepage/stressd/${state.stress_id}/`, {
+        .get(`https://onepage-server.com/onepage/stressd/${state.stress_id}/`, {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -62,7 +62,7 @@ export const RegisteredStressDetail = (props: CreateStressType) => {
     console.log(data);
 
     axios
-      .put(`http://127.0.0.1:8000/onepage/stressd/${state.stress_id}/`, data, {
+      .put(`https://onepage-server.com/onepage/stressd/${state.stress_id}/`, data, {
         headers: {
           Authorization: `Token ${token}`
         }

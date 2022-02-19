@@ -56,7 +56,7 @@ export const InterviewList = (props: RegisterdVideoType) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/interview/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/interview/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -184,7 +184,7 @@ export const InterviewList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/inter/${props}/`, {
+      .get(`https://onepage-server.com/onepage/inter/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

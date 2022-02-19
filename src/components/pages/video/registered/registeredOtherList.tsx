@@ -56,7 +56,7 @@ export const RegisteredOtherList = (props: RegisterdVideoType) => {
     setColor("otherR");
 
     axios
-      .get(`http://127.0.0.1:8000/onepage/other/?page=${page}`, {
+      .get(`https://onepage-server.com/onepage/other/?page=${page}`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -184,7 +184,7 @@ export const RegisteredOtherList = (props: RegisterdVideoType) => {
 
   const onClickDetail = (props: number) => {
     axios
-      .get(`http://127.0.0.1:8000/onepage/otherd/${props}/`, {
+      .get(`https://onepage-server.com/onepage/otherd/${props}/`, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
