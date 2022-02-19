@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, createContext } from "react";
 
 import { SideMenu } from "../organizes/sideMenu";
-// import { Main } from "../organizes/main";
+import { Main } from "../organizes/main";
 import { Header } from "../organizes/header";
 
 export const DashBoard = () => {
@@ -16,7 +16,7 @@ export const DashBoard = () => {
       </div>
       <div className={sideMenuToggle ? "rightSide" : "rightSide-hidden"}>
         <Header setValue={setSideMenuToggle} value={sideMenuToggle} />
-        {/* <Main setColor={setColor} /> */}
+        <Main setColor={setColor} />
       </div>
     </DashBoardPage>
   );
