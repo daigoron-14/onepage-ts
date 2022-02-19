@@ -472,6 +472,19 @@ export const SideMenu = memo((props: SideMenuType) => {
             color === "interviewR" ? "sideHide-list-color" : "sideHide-list"
           }
         />
+        <SideButtonHide
+          title="その他"
+          listStyle="sideHide-none"
+          iconFlag={false}
+          link="registered/other"
+          flag={false}
+          classnamePull={
+            videoR && video ? "sideHide-root sideHide-visible" : "sideHide-root"
+          }
+          classnameTitle={
+            color === "otherR" ? "sideHide-list-color" : "sideHide-list"
+          }
+        />
         <SideButtonTitle
           title="新規作成"
           listStyle="sideHide-item"
@@ -556,6 +569,19 @@ export const SideMenu = memo((props: SideMenuType) => {
           }
           classnameTitle={
             color === "interviewN" ? "sideHide-list-color" : "sideHide-list"
+          }
+        />
+        <SideButtonHide
+          title="その他"
+          listStyle="sideHide-none"
+          iconFlag={false}
+          link="create/other"
+          flag={false}
+          classnamePull={
+            videoN && video ? "sideHide-root sideHide-visible" : "sideHide-root"
+          }
+          classnameTitle={
+            color === "otherN" ? "sideHide-list-color" : "sideHide-list"
           }
         />
         <SideButton

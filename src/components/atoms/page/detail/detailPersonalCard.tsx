@@ -28,7 +28,7 @@ export const DetailPersonalCard = (props: PersonalCardType) => {
     if (id != "") {
       if (label === "趣味") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/hobbyd/${id}/`, {
+          .get(`https://onepage-server.com/onepage/hobbyd/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -43,7 +43,7 @@ export const DetailPersonalCard = (props: PersonalCardType) => {
           });
       } else if (label === "特技") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/talentd/${id}/`, {
+          .get(`https://onepage-server.com/onepage/talentd/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -58,7 +58,7 @@ export const DetailPersonalCard = (props: PersonalCardType) => {
           });
       } else if (label === "ストレス") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/stressd/${id}/`, {
+          .get(`https://onepage-server.com/onepage/stressd/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }

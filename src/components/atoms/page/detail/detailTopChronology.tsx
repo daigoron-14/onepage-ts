@@ -36,7 +36,7 @@ export const DetailTopChronology = (props: TopChronologyType) => {
     if (id != "") {
       if (label === "1") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/chrono/${id}/`, {
+          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -54,7 +54,7 @@ export const DetailTopChronology = (props: TopChronologyType) => {
           });
       } else if (label === "2") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/chrono/${id}/`, {
+          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -72,7 +72,7 @@ export const DetailTopChronology = (props: TopChronologyType) => {
           });
       } else if (label === "3") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/chrono/${id}/`, {
+          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }

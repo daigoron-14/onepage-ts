@@ -10,7 +10,7 @@ export const ProfileImage = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/onepage/basic/", {
+      .get("https://onepage-server.com/onepage/basic/", {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`

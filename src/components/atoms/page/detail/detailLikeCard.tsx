@@ -29,7 +29,7 @@ export const DetailLikeCard = (props: LikeCardType) => {
     if (id != "") {
       if (label === "1") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/liked/${id}/`, {
+          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -45,7 +45,7 @@ export const DetailLikeCard = (props: LikeCardType) => {
           });
       } else if (label === "2") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/liked/${id}/`, {
+          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }
@@ -61,7 +61,7 @@ export const DetailLikeCard = (props: LikeCardType) => {
           });
       } else if (label === "3") {
         axios
-          .get(`http://127.0.0.1:8000/onepage/liked/${id}/`, {
+          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
             headers: {
               Authorization: `Token ${token}`
             }

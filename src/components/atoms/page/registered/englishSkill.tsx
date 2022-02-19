@@ -19,7 +19,7 @@ export const EnglishSkill = (props: EnglishSkillType) => {
   useEffect(() => {
     if (title === "TOEIC") {
       axios
-        .get("http://127.0.0.1:8000/onepage/language/", {
+        .get("https://onepage-server.com/onepage/language/", {
           headers: {
             Authorization: `Token ${token}`
           }
@@ -36,7 +36,7 @@ export const EnglishSkill = (props: EnglishSkillType) => {
         });
     } else if (title === "TOEFL") {
       axios
-        .get("http://127.0.0.1:8000/onepage/language/", {
+        .get("https://onepage-server.com/onepage/language/", {
           headers: {
             Authorization: `Token ${token}`
           }

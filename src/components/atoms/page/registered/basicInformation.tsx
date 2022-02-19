@@ -35,7 +35,7 @@ export const BasicInfromation = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/onepage/basic/", {
+      .get("https://onepage-server.com/onepage/basic/", {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Token ${token}`
@@ -60,7 +60,7 @@ export const BasicInfromation = () => {
       });
 
     axios
-      .get("http://127.0.0.1:8000/onepage/education/", {
+      .get("https://onepage-server.com/onepage/education/", {
         headers: {
           Authorization: `Token ${token}`
         }
@@ -77,7 +77,7 @@ export const BasicInfromation = () => {
       });
 
     axios
-      .get("http://127.0.0.1:8000/onepage/address/", {
+      .get("https://onepage-server.com/onepage/address/", {
         headers: {
           Authorization: `Token ${token}`
         }

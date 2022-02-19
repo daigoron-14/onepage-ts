@@ -41,7 +41,7 @@ export const VideoCard = (props: VideoCardType) => {
   useEffect(() => {
     if (label === "motiv") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/motiv/${id}/`, {
+        .get(`https://onepage-server.com/onepage/motiv/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -57,7 +57,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "self") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/self/${id}/`, {
+        .get(`https://onepage-server.com/onepage/self/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -73,7 +73,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "extra") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/extra/${id}/`, {
+        .get(`https://onepage-server.com/onepage/extra/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -89,7 +89,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "inter") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/inter/${id}/`, {
+        .get(`https://onepage-server.com/onepage/inter/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -105,7 +105,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "frust") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/frust/${id}/`, {
+        .get(`https://onepage-server.com/onepage/frust/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -121,7 +121,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "other1") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/otherd/${id}/`, {
+        .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -137,7 +137,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "other2") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/otherd/${id}/`, {
+        .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
@@ -153,7 +153,7 @@ export const VideoCard = (props: VideoCardType) => {
         });
     } else if (label === "other3") {
       axios
-        .get(`http://127.0.0.1:8000/onepage/otherd/${id}/`, {
+        .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Token ${token}`
