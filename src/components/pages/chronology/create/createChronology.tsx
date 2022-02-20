@@ -7,6 +7,7 @@ import { VideoBasic } from "../../video/create/createMotivation";
 import { SelectDay } from "../../../atoms/create/selectDay";
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type CreateChronologyType = {
@@ -15,6 +16,7 @@ type CreateChronologyType = {
 
 export const CreateChronology = (props: CreateChronologyType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -52,6 +54,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success");
       })
       .catch((err) => {
         console.log(err.response.data);

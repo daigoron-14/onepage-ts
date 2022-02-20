@@ -19,6 +19,7 @@ import { CreateHobby } from "../pages/personal/create/createHobby";
 import { CreateTalent } from "../pages/personal/create/createTalent";
 import { CreateChronology } from "../pages/chronology/create/createChronology";
 import { CreatePage } from "../pages/page/createPage";
+import { SuccessPage } from "../pages/page/successPage";
 
 import { RegisteredChronologyList } from "../pages/chronology/registered/registeredChronologyList";
 import { RegisteredChronologyDetail } from "../pages/chronology/registered/registeredChronologyDetail";
@@ -228,6 +229,9 @@ export const Main = (props: MainType) => {
           path="/registered/chronology/detail"
           element={<RegisteredChronologyDetail setColor={setColor} />}
         />
+
+        {/* success */}
+        <Route path="/success" element={<SuccessPage />} />
       </Routes>
     </MainBox>
   );

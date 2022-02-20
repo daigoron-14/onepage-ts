@@ -6,6 +6,7 @@ import { AddVideo } from "../../../atoms/create/addVideo";
 import { VideoBasic } from "./createMotivation";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateInterviewType = {
   setColor: Function;
@@ -13,6 +14,7 @@ type CreateInterviewType = {
 
 export const CreateInterview = (props: CreateInterviewType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [video, setVideo] = useState("");
   const [title, setTitle] = useState("");
@@ -41,6 +43,7 @@ export const CreateInterview = (props: CreateInterviewType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

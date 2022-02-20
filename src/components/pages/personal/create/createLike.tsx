@@ -6,6 +6,7 @@ import { AddLikeImage } from "../../../atoms/create/addLikeImage";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateLikeType = {
   setColor: Function;
@@ -13,6 +14,7 @@ type CreateLikeType = {
 
 export const CreateLike = (props: CreateLikeType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [like, setLike] = useState("");
   const [text, setText] = useState("");
@@ -39,6 +41,7 @@ export const CreateLike = (props: CreateLikeType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -150,6 +153,7 @@ export const BInfromation = styled.div`
           opacity: 1;
           background: transparent;
           color: rgb(52, 71, 103);
+          padding-left: 24px;
 
           h5 {
             margin: 0px;

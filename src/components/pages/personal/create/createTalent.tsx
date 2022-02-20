@@ -6,6 +6,7 @@ import { BInfromation } from "../../basic/basic";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateTalentType = {
   setColor: Function;
@@ -13,6 +14,7 @@ type CreateTalentType = {
 
 export const CreateTalent = (props: CreateTalentType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [event, setEvent] = useState("");
@@ -37,6 +39,7 @@ export const CreateTalent = (props: CreateTalentType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

@@ -3,6 +3,7 @@ import { InputButton } from "../../atoms/create/inputButton";
 
 import { BInfromation } from "./basic";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type CreateAddressType = {
@@ -11,6 +12,7 @@ type CreateAddressType = {
 
 export const CreateAddress = (props: CreateAddressType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [postcard, setPostcard] = useState("");
   const [fixedPhone, setFixedPhone] = useState("");
@@ -70,6 +72,7 @@ export const CreateAddress = (props: CreateAddressType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response.data);
@@ -83,6 +86,7 @@ export const CreateAddress = (props: CreateAddressType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response);

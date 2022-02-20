@@ -6,6 +6,7 @@ import { BInfromation } from "../basic/basic";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateQualificationType = {
   setColor: Function;
@@ -13,6 +14,7 @@ type CreateQualificationType = {
 
 export const CreateQualification = (props: CreateQualificationType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [skill1, setSkill1] = useState("");
   const [year1, setYear1] = useState("");
@@ -99,6 +101,7 @@ export const CreateQualification = (props: CreateQualificationType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success")
         })
         .catch((err) => {
           console.log(err.response.data);
@@ -112,6 +115,7 @@ export const CreateQualification = (props: CreateQualificationType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success")
         })
         .catch((err) => {
           console.log(err.response);

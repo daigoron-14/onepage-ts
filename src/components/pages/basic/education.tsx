@@ -5,6 +5,7 @@ import { SelectSchool } from "../../atoms/create/selectSchool";
 
 import { BInfromation } from "./basic";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type CreateEducationType = {
@@ -13,6 +14,7 @@ type CreateEducationType = {
 
 export const CreateEducation = (props: CreateEducationType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [entryYear, setEntryYear] = useState("");
   const [entryMonth, setEntryMonth] = useState("");
@@ -84,6 +86,7 @@ export const CreateEducation = (props: CreateEducationType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response.data);
@@ -97,6 +100,7 @@ export const CreateEducation = (props: CreateEducationType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response);

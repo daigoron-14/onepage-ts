@@ -5,6 +5,7 @@ import { BasicTextarea } from "../../../atoms/create/basicTextarea";
 import { BInfromation } from "../../basic/basic";
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type CreateHobbyType = {
@@ -13,6 +14,7 @@ type CreateHobbyType = {
 
 export const CreateHobby = (props: CreateHobbyType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [start, setStart] = useState("");
@@ -37,6 +39,7 @@ export const CreateHobby = (props: CreateHobbyType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

@@ -7,6 +7,7 @@ import { VideoBasic } from "./createMotivation";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateSelfproduceType = {
   setColor: Function;
@@ -14,6 +15,7 @@ type CreateSelfproduceType = {
 
 export const CreateSelfproduce = (props: CreateSelfproduceType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [video, setVideo] = useState("");
   const [title, setTitle] = useState("");
@@ -42,6 +44,7 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

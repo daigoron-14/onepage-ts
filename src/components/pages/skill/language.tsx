@@ -8,6 +8,7 @@ import { BInfromation } from "../basic/basic";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateLanguageType = {
   setColor: Function;
@@ -15,6 +16,7 @@ type CreateLanguageType = {
 
 export const CreateLanguage = (props: CreateLanguageType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [toeic, setToeic] = useState("");
   const [toeicYear, setToeicYear] = useState("----");
@@ -86,6 +88,7 @@ export const CreateLanguage = (props: CreateLanguageType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success")
         })
         .catch((err) => {
           console.log(err.response.data);
@@ -99,6 +102,7 @@ export const CreateLanguage = (props: CreateLanguageType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success")
         })
         .catch((err) => {
           console.log(err.response);

@@ -14,7 +14,7 @@ export const InputButton = (props: InputButtonType) => {
     <InputButtons>
       <div></div>
       <button onClick={create} type="button">
-        next
+        登録する
       </button>
     </InputButtons>
   );
@@ -81,5 +81,6 @@ const InputButtons = styled.div`
     color: rgb(255, 255, 255);
     background-size: 150% !important;
     background-position-x: 25% !important;
+    margin-right: 24px;
   }
 `;

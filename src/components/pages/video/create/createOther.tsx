@@ -6,6 +6,7 @@ import { AddVideo } from "../../../atoms/create/addVideo";
 import { VideoBasic } from "./createMotivation";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateOtherType = {
   setColor: Function;
@@ -13,6 +14,7 @@ type CreateOtherType = {
 
 export const CreateOther = (props: CreateOtherType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [video, setVideo] = useState("");
   const [label, setLabel] = useState("");
@@ -41,6 +43,7 @@ export const CreateOther = (props: CreateOtherType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

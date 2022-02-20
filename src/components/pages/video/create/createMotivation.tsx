@@ -7,6 +7,7 @@ import { AddVideo } from "../../../atoms/create/addVideo";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type CreateMotivationType = {
   setColor: Function;
@@ -14,6 +15,7 @@ type CreateMotivationType = {
 
 export const CreateMotivation = (props: CreateMotivationType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [video, setVideo] = useState("");
   const [title, setTitle] = useState("");
@@ -42,6 +44,7 @@ export const CreateMotivation = (props: CreateMotivationType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -160,6 +163,7 @@ export const VideoBasic = styled.div`
           opacity: 1;
           background: transparent;
           color: rgb(52, 71, 103);
+          padding-left: 24px;
 
           h5 {
             margin: 0px;
@@ -215,8 +219,7 @@ export const VideoBasic = styled.div`
             display: flex;
             justify-content: center;
             margin-top: -24px;
-            width: calc(100% + 24px);
-            margin-left: -24px;
+            width: 100%;
             height: 100%;
           }
         }

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { BasicInput } from "../../atoms/create/basicInput";
@@ -15,6 +16,7 @@ type CreateBasicType = {
 
 export const CreateBasic = (props: CreateBasicType) => {
   const { setColor } = props;
+  const navigate = useNavigate();
 
   const [idPhoto, setIdPhoto] = useState("");
   const [idPhotoPre, setIdPhotoPre] = useState("");
@@ -98,6 +100,7 @@ export const CreateBasic = (props: CreateBasicType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response.data);
@@ -112,6 +115,7 @@ export const CreateBasic = (props: CreateBasicType) => {
         })
         .then((res) => {
           console.log("response body:", res.data);
+          navigate("/dashboard/success");
         })
         .catch((err) => {
           console.log(err.response);

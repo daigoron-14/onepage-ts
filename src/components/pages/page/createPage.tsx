@@ -107,6 +107,7 @@ export const CreatePage = (props: CreatePageType) => {
   } = props;
 
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
