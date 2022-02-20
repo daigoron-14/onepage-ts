@@ -28,6 +28,15 @@ export const CreateEducation = (props: CreateEducationType) => {
   const [studyTitle, setStudyTitle] = useState("");
   const [update, setUpdate] = useState(false);
 
+  const [errEntryYear, setErrEntryYear] = useState("");
+  const [errEntryMonth, setErrEntryMonth] = useState("");
+  const [errGraduateYear, setErrGraduateYear] = useState("");
+  const [errGraduateMonth, setErrGraduateMonth] = useState("");
+  const [errDevision, setErrDivision] = useState("----");
+  const [errSchool, setErrSchool] = useState("");
+  const [errFaculty, setErrFaculty] = useState("");
+  const [errDepartment, setErrDepartment] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -90,6 +99,14 @@ export const CreateEducation = (props: CreateEducationType) => {
         })
         .catch((err) => {
           console.log(err.response.data);
+          setErrEntryYear(err.ressponse.data.entry_year);
+          setErrEntryMonth(err.ressponse.data.entry_month);
+          setErrGraduateYear(err.ressponse.data.graduate_year);
+          setErrGraduateMonth(err.ressponse.data.graduate_month);
+          setErrDivision(err.ressponse.data.devision);
+          setErrSchool(err.ressponse.data.school);
+          setErrFaculty(err.ressponse.data.faculty);
+          setErrDepartment(err.ressponse.data.department);
         });
     } else {
       axios
@@ -104,6 +121,14 @@ export const CreateEducation = (props: CreateEducationType) => {
         })
         .catch((err) => {
           console.log(err.response);
+          setErrEntryYear(err.ressponse.data.entry_year);
+          setErrEntryMonth(err.ressponse.data.entry_month);
+          setErrGraduateYear(err.ressponse.data.graduate_year);
+          setErrGraduateMonth(err.ressponse.data.graduate_month);
+          setErrDivision(err.ressponse.data.devision);
+          setErrSchool(err.ressponse.data.school);
+          setErrFaculty(err.ressponse.data.faculty);
+          setErrDepartment(err.ressponse.data.department);
         });
     }
   };
@@ -134,6 +159,7 @@ export const CreateEducation = (props: CreateEducationType) => {
                         valueYear={entryYear}
                         valueMonth={entryMonth}
                         valueDay={entryMonth}
+                        alert={errEntryYear}
                       />
                       <SelectDay
                         title="卒業年月（見込）"
@@ -147,16 +173,18 @@ export const CreateEducation = (props: CreateEducationType) => {
                         valueYear={graduateYear}
                         valueMonth={graduateMonth}
                         valueDay={entryMonth}
+                        alert={errGraduateYear}
                       />
                     </div>
                     <div className="basicBox-item-containt">
-                      <SelectSchool setValue={setDivision} value={devision} />
+                      <SelectSchool setValue={setDivision} value={devision} alert={errDevision}/>
                       <BasicInput
                         title="学校名"
                         name="school"
                         placeholder="〇〇"
                         setValue={setSchool}
                         value={school}
+                        alert={errSchool}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -166,6 +194,7 @@ export const CreateEducation = (props: CreateEducationType) => {
                         placeholder="〇〇学部"
                         setValue={setFaculty}
                         value={faculty}
+                        alert={errFaculty}
                       />
                       <BasicInput
                         title="学科名"
@@ -173,6 +202,7 @@ export const CreateEducation = (props: CreateEducationType) => {
                         placeholder="〇〇学科"
                         setValue={setDepartment}
                         value={department}
+                        alert={errDepartment}
                       />
                     </div>
                     <div className="basicBox-item-containt">

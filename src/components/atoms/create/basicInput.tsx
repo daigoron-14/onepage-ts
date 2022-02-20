@@ -7,13 +7,14 @@ type BasicInputType = {
   placeholder: string;
   setValue: Function;
   value?: string;
+  alert?: string;
 };
 
 export const firstNameKanjiContext = createContext("");
 export const lastNameKanjiContext = createContext("");
 
 export const BasicInput = (props: BasicInputType) => {
-  const { title, name, placeholder, setValue, value } = props;
+  const { title, name, placeholder, setValue, value, alert } = props;
 
   const onChangeEvent = (e: ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
@@ -36,7 +37,7 @@ export const BasicInput = (props: BasicInputType) => {
         />
       </div>
       <div className="basic-alert">
-        <div className="basic-alert-item">必須項目です</div>
+        <div className="basic-alert-item">{alert}</div>
       </div>
     </BInput>
   );
@@ -201,7 +202,6 @@ const BInput = styled.div`
 
     &-alert {
       margin-top: 6px;
-      opacity: 0;
       background: transparent;
       color: rgb(52, 71, 103);
 

@@ -5,10 +5,11 @@ import { ChangeEvent } from "react";
 type SelectSchoolType = {
   setValue: Function;
   value: string;
+  alert?: string;
 };
 
 export const SelectSchool = (props: SelectSchoolType) => {
-  const { setValue, value } = props;
+  const { setValue, value, alert } = props;
 
   const onChangeValue = (e: ChangeEvent<HTMLSelectElement>) =>
     setValue(e.target.value);
@@ -34,7 +35,7 @@ export const SelectSchool = (props: SelectSchoolType) => {
         </div>
       </div>
       <div className="select-alert">
-        <div className="select-alert-item">必須項目です</div>
+        <div className="select-alert-item">{alert}</div>
       </div>
     </SBox>
   );

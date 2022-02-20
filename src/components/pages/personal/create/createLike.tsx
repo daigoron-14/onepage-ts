@@ -20,6 +20,10 @@ export const CreateLike = (props: CreateLikeType) => {
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
 
+  const [errLike, setErrLike] = useState("");
+  const [errText, setErrText] = useState("");
+  const [errImage, setErrImage] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -45,6 +49,9 @@ export const CreateLike = (props: CreateLikeType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrImage(err.ressponse.data.like_image);
+        setErrLike(err.ressponse.data.like_name);
+        setErrText(err.ressponse.data.like_text);
       });
   };
 
@@ -73,6 +80,7 @@ export const CreateLike = (props: CreateLikeType) => {
                         labels="画像をアップロード"
                         setValue={setImage}
                         accept="image/*"
+                        alert={errImage}
                       />
                       <div className="basicBox-item-containt">
                         <BasicInput
@@ -80,12 +88,14 @@ export const CreateLike = (props: CreateLikeType) => {
                           name="like_name_1"
                           placeholder=""
                           setValue={setLike}
+                          alert={errLike}
                         />
                         <BasicTextarea
                           title="どうしてそれが好きですか?"
                           name="like_text_1"
                           lines="basic-textarea-text-3"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

@@ -8,10 +8,11 @@ type RadioInputType = {
   third: string;
   setValue: Function;
   checked: string;
+  alert?: string;
 };
 
 export const LadioInput = (props: RadioInputType) => {
-  const { label, first, second, third, setValue, checked } = props;
+  const { label, first, second, third, setValue, checked, alert } = props;
   const [a, setA] = useState(false);
   const [b, setB] = useState(false);
   const [c, setC] = useState(false);
@@ -69,7 +70,7 @@ export const LadioInput = (props: RadioInputType) => {
         </div>
       </div>
       <div className="radio-alert">
-        <div className="radio-alert-item">必須項目です</div>
+        <div className="radio-alert-item">{alert}</div>
       </div>
     </Ladio>
   );
@@ -234,7 +235,6 @@ const Ladio = styled.div`
 
     &-alert {
       margin-top: 6px;
-      opacity: 0;
       background: transparent;
       color: rgb(52, 71, 103);
 

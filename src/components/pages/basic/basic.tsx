@@ -33,6 +33,18 @@ export const CreateBasic = (props: CreateBasicType) => {
   const [update, setUpdate] = useState(false);
   const [userId, setUserId] = useState("") 
 
+  const [errIdPhoto, setErrIdPhoto] = useState("");
+  const [errFirst_kanji, setErrFirst_kanji] = useState("");
+  const [errLast_kanji, setErrLast_kanji] = useState("");
+  const [errFirst_kana, setErrFirst_kana] = useState("");
+  const [errLast_kana, setErrLast_kana] = useState("");
+  const [errGender, setErrGender] = useState("");
+  const [errBirth_y, setErrBirth_y] = useState("----");
+  const [errBirth_m, setErrBirth_m] = useState("--");
+  const [errBirth_d, setErrBirth_d] = useState("--");
+  const [errMail, setErrMail] = useState("");
+  const [errPhone, setErrPhone] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -104,6 +116,22 @@ export const CreateBasic = (props: CreateBasicType) => {
         })
         .catch((err) => {
           console.log(err.response.data);
+          setErrFirst_kanji(err.response.data[0].first_name_kanji);
+          setErrLast_kanji(err.response.data[0].last_name_kanji);
+          setErrFirst_kana(err.response.data[0].first_name_kana);
+          setErrLast_kana(err.response.data[0].last_name_kana);
+          setErrGender(err.response.data[0].gender);
+          setErrBirth_y(err.response.data[0].birthday_year);
+          setErrBirth_m(err.response.data[0].birthday_month);
+          setErrBirth_d(err.response.data[0].birthday_day);
+          setErrMail(err.response.data[0].mailaddress);
+          setErrPhone(err.response.data[0].phonenumber);
+          if (
+            err.response.data.id_photo ==
+            "添付されたデータはファイルではありません。フォームのエンコーディングタイプを確認してください。"
+          ) {
+            setErrIdPhoto("この項目は空にできません。");
+          }
         });
     } else {
       axios
@@ -119,6 +147,22 @@ export const CreateBasic = (props: CreateBasicType) => {
         })
         .catch((err) => {
           console.log(err.response);
+          setErrFirst_kanji(err.response.data.first_name_kanji);
+          setErrLast_kanji(err.response.data.last_name_kanji);
+          setErrFirst_kana(err.response.data.first_name_kana);
+          setErrLast_kana(err.response.data.last_name_kana);
+          setErrGender(err.response.data.gender);
+          setErrBirth_y(err.response.data.birthday_year);
+          setErrBirth_m(err.response.data.birthday_month);
+          setErrBirth_d(err.response.data.birthday_day);
+          setErrMail(err.response.data.mailaddress);
+          setErrPhone(err.response.data.phonenumber);
+          if (
+            err.response.data.id_photo ==
+            "添付されたデータはファイルではありません。フォームのエンコーディングタイプを確認してください。"
+          ) {
+            setErrIdPhoto("この項目は空にできません。");
+          }
         });
     }
   };
@@ -149,6 +193,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           accept="image/*"
                           setValue={setIdPhoto}
                           image={idPhotoPre}
+                          alert={errIdPhoto}
                         />
                       ) : (
                         <AddImage
@@ -156,6 +201,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           labels="証明写真をアップロード"
                           accept="image/*"
                           setValue={setIdPhoto}
+                          alert={errIdPhoto}
                         />
                       )}
                     </div>
@@ -167,6 +213,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder=""
                           setValue={setFirst_kanji}
                           value={first_kanji}
+                          alert={errFirst_kanji}
                         />
                         <BasicInput
                           title="漢字名"
@@ -174,6 +221,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder=""
                           setValue={setLast_kanji}
                           value={last_kanji}
+                          alert={errLast_kanji}
                         />
                       </div>
                       <div className="basicBox-item-containt">
@@ -183,6 +231,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder=""
                           setValue={setFirst_kana}
                           value={first_kana}
+                          alert={errFirst_kana}
                         />
                         <BasicInput
                           title="カナ姓"
@@ -190,6 +239,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder=""
                           setValue={setLast_kana}
                           value={last_kana}
+                          alert={errLast_kanji}
                         />
                       </div>
                       <div className="basicBox-item-containt">
@@ -200,6 +250,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           third="回答なし"
                           setValue={setGender}
                           checked={gender}
+                          alert={errGender}
                         />
                         <SelectDay
                           title="生年月日"
@@ -213,6 +264,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           valueYear={birth_y}
                           valueMonth={birth_m}
                           valueDay={birth_d}
+                          alert={errBirth_y}
                         />
                       </div>
                       <div className="basicBox-item-containt">
@@ -222,6 +274,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder="XXX-XXXX"
                           setValue={setPhone}
                           value={phone}
+                          alert={errPhone}
                         />
                         <BasicInput
                           title="メールアドレス"
@@ -229,6 +282,7 @@ export const CreateBasic = (props: CreateBasicType) => {
                           placeholder="xxxxxxxx@xxx.xxx"
                           setValue={setMail}
                           value={mail}
+                          alert={errMail}
                         />
                       </div>
                     </div>
@@ -296,6 +350,7 @@ export const BInfromation = styled.div`
           opacity: 1;
           background: transparent;
           color: rgb(52, 71, 103);
+          padding-left: 24px;
 
           h5 {
             margin: 0px;
@@ -340,8 +395,7 @@ export const BInfromation = styled.div`
             display: flex;
             justify-content: start;
             margin-top: -24px;
-            width: calc(100% + 24px);
-            margin-left: -24px;
+            width: 100%;
           }
         }
       }

@@ -20,6 +20,10 @@ export const CreateStress = (props: CreateStressType) => {
   const [reason, setReason] = useState("");
   const [relux, setRelux] = useState("");
 
+  const [errName, setErrName] = useState("");
+  const [errReason, setErrReason] = useState("");
+  const [errRelux, setErrRelux] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -43,6 +47,9 @@ export const CreateStress = (props: CreateStressType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrName(err.ressponse.data.stress_name);
+        setErrReason(err.ressponse.data.stress_reason);
+        setErrRelux(err.ressponse.data.stress_relux);
       });
   };
 
@@ -72,6 +79,7 @@ export const CreateStress = (props: CreateStressType) => {
                         name="stress_name"
                         placeholder=""
                         setValue={setName}
+                        alert={errName}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -80,6 +88,7 @@ export const CreateStress = (props: CreateStressType) => {
                         name="stress_reason"
                         lines="basic-textarea-text"
                         setValue={setReason}
+                        alert={errReason}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -88,6 +97,7 @@ export const CreateStress = (props: CreateStressType) => {
                         name="stress_relux"
                         lines="basic-textarea-text"
                         setValue={setRelux}
+                        alert={errRelux}
                       />
                     </div>
                   </div>

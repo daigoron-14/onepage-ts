@@ -22,6 +22,11 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
   const [strength, setStrength] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errStrength, setErrStrength] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -48,6 +53,10 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.selfproduce_file);
+        setErrTitle(err.ressponse.data.selfproduce_title);
+        setErrStrength(err.ressponse.data.selfproduce_strength);
+        setErrText(err.ressponse.data.selfproduce_text);
       });
   };
 
@@ -74,6 +83,7 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -81,12 +91,14 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
                             name="selfproduce_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <BasicInput
                             title="あなたの強み"
                             name="selfproduce_strength"
                             placeholder=""
                             setValue={setStrength}
+                            alert={errStrength}
                           />
                         </div>
                       </div>
@@ -96,6 +108,7 @@ export const CreateSelfproduce = (props: CreateSelfproduceType) => {
                           name="selfproduce_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

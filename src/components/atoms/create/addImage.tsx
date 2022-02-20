@@ -8,10 +8,11 @@ type AddFileType = {
   labels: string;
   setValue: Function;
   accept: string;
+  alert?: string;
 };
 
 export const AddImage = (props: AddFileType) => {
-  const { title, labels, setValue, accept } = props;
+  const { title, labels, setValue, accept, alert } = props;
   const [imageFlag, setImageFlag] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
 
@@ -29,7 +30,6 @@ export const AddImage = (props: AddFileType) => {
       <div className="label">
         <label className="label-item">{title}</label>
       </div>
-
       <div className="button">
         {imageFlag ? (
           <div className="button-selected">
@@ -67,6 +67,9 @@ export const AddImage = (props: AddFileType) => {
           </div>
         )}
       </div>
+      <div className="alert">
+        <div className="alert-item">{alert}</div>
+      </div>
     </AddFile>
   );
 };
@@ -76,6 +79,25 @@ const AddFile = styled.div`
   padding-right: 42px;
   width: 100%;
   height: 100%;
+
+  .alert {
+    margin-top: 6px;
+    background: transparent;
+    color: rgb(52, 71, 103);
+
+    &-item {
+      margin: 0px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: 0.03333em;
+      opacity: 1;
+      text-transform: none;
+      vertical-align: unset;
+      text-decoration: none;
+      color: rgb(234, 6, 6);
+    }
+  }
 
   .label {
     margin-bottom: 8px;

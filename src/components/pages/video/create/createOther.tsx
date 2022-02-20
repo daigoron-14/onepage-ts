@@ -21,6 +21,11 @@ export const CreateOther = (props: CreateOtherType) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errLabel, setErrLabel] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -47,6 +52,10 @@ export const CreateOther = (props: CreateOtherType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.other_file);
+        setErrTitle(err.ressponse.data.other_title);
+        setErrLabel(err.ressponse.data.other_label);
+        setErrText(err.ressponse.data.other_text);
       });
   };
 
@@ -73,28 +82,32 @@ export const CreateOther = (props: CreateOtherType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
                             title="動画区分"
-                            name="interview_title"
+                            name="other_label"
                             placeholder=""
                             setValue={setLabel}
+                            alert={errLabel}
                           />
                           <BasicInput
                             title="動画タイトル"
-                            name="interview_relationship"
+                            name="other_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                         </div>
                       </div>
                       <div className="basicBox-item-containt">
                         <BasicTextarea
                           title="動画内容"
-                          name="interview_text"
+                          name="other_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

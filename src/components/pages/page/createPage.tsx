@@ -162,6 +162,7 @@ export const CreatePage = (props: CreatePageType) => {
       })
       .then((res) => {
         console.log("response body:", res.data);
+        navigate("/dashboard/success")
       })
       .catch((err) => {
         console.log(err.response.data);

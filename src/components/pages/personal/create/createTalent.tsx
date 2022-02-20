@@ -20,6 +20,10 @@ export const CreateTalent = (props: CreateTalentType) => {
   const [event, setEvent] = useState("");
   const [text, setText] = useState("");
 
+  const [errName, setErrName] = useState("");
+  const [errEvent, setErrEvent] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -43,6 +47,9 @@ export const CreateTalent = (props: CreateTalentType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrName(err.ressponse.data.talent_name);
+        setErrEvent(err.ressponse.data.talent_event);
+        setErrText(err.ressponse.data.talent_text);
       });
   };
 
@@ -72,6 +79,7 @@ export const CreateTalent = (props: CreateTalentType) => {
                         name="talent_name"
                         placeholder=""
                         setValue={setName}
+                        alert={errName}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -80,6 +88,7 @@ export const CreateTalent = (props: CreateTalentType) => {
                         name="talent_text"
                         lines="basic-textarea-text"
                         setValue={setText}
+                        alert={errText}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -88,6 +97,7 @@ export const CreateTalent = (props: CreateTalentType) => {
                         name="talent_event"
                         lines="basic-textarea-text"
                         setValue={setEvent}
+                        alert={errEvent}
                       />
                     </div>
                   </div>

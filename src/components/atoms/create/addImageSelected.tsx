@@ -9,10 +9,11 @@ type AddFileType = {
   setValue: Function;
   accept: string;
   image: string;
+  alert?: string;
 };
 
 export const AddImageSelected = (props: AddFileType) => {
-  const { title, labels, setValue, accept, image } = props;
+  const { title, labels, setValue, accept, image, alert } = props;
   const [imageFlag, setImageFlag] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
 
@@ -53,6 +54,9 @@ export const AddImageSelected = (props: AddFileType) => {
           </div>
         </div>
       </div>
+      <div className="alert">
+        <div className="alert-item">{alert}</div>
+      </div>
     </AddFile>
   );
 };
@@ -62,6 +66,25 @@ const AddFile = styled.div`
   padding-right: 42px;
   width: 100%;
   height: 100%;
+
+  .alert {
+    margin-top: 6px;
+    background: transparent;
+    color: rgb(52, 71, 103);
+
+    &-item {
+      margin: 0px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      line-height: 1.25;
+      letter-spacing: 0.03333em;
+      opacity: 1;
+      text-transform: none;
+      vertical-align: unset;
+      text-decoration: none;
+      color: rgb(234, 6, 6);
+    }
+  }
 
   .label {
     margin-bottom: 8px;

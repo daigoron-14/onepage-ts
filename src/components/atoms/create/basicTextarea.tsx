@@ -8,10 +8,11 @@ type BasicTextareaType = {
   lines: string;
   setValue: Function;
   value?: string;
+  alert?: string;
 };
 
 export const BasicTextarea = (props: BasicTextareaType) => {
-  const { title, name, lines, setValue, value } = props;
+  const { title, name, lines, setValue, value, alert } = props;
 
   const onChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) =>
     setValue(e.target.value);
@@ -32,7 +33,7 @@ export const BasicTextarea = (props: BasicTextareaType) => {
         ></textarea>
       </div>
       <div className="basic-alert">
-        <div className="basic-alert-item">必須項目です</div>
+        <div className="basic-alert-item">{alert}</div>
       </div>
     </BTextarea>
   );
@@ -242,7 +243,6 @@ const BTextarea = styled.div`
 
     &-alert {
       margin-top: 6px;
-      opacity: 0;
       background: transparent;
       color: rgb(52, 71, 103);
 

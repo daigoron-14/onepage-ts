@@ -13,6 +13,7 @@ type SelectDayType = {
   valueYear?: string;
   valueMonth?: string;
   valueDay?: string;
+  alert?: string;
 };
 
 export const SelectDay = (props: SelectDayType) => {
@@ -27,7 +28,8 @@ export const SelectDay = (props: SelectDayType) => {
     setDay,
     valueYear,
     valueMonth,
-    valueDay
+    valueDay,
+    alert
   } = props;
 
   const onChangeYear = (e: ChangeEvent<HTMLSelectElement>) =>
@@ -159,7 +161,7 @@ export const SelectDay = (props: SelectDayType) => {
         )}
       </div>
       <div className="select-alert">
-        <div className="select-alert-item">必須項目です</div>
+        <div className="select-alert-item">{alert}</div>
       </div>
     </SBox>
   );
@@ -314,7 +316,6 @@ export const SBox = styled.div`
     }
     &-alert {
       margin-top: 6px;
-      opacity: 0;
       background: transparent;
       color: rgb(52, 71, 103);
 

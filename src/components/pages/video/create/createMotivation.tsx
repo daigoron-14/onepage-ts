@@ -22,6 +22,11 @@ export const CreateMotivation = (props: CreateMotivationType) => {
   const [company, setCompany] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errCompany, setErrCompany] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -48,6 +53,10 @@ export const CreateMotivation = (props: CreateMotivationType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.motivation_file);
+        setErrTitle(err.ressponse.data.motivation_title);
+        setErrCompany(err.ressponse.data.motivation_company);
+        setErrText(err.ressponse.data.motivation_text);
       });
   };
 
@@ -74,6 +83,7 @@ export const CreateMotivation = (props: CreateMotivationType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -81,12 +91,14 @@ export const CreateMotivation = (props: CreateMotivationType) => {
                             name="motivation_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <BasicInput
                             title="志望企業"
                             name="motivation_company"
                             placeholder="株式会社〇〇"
                             setValue={setCompany}
+                            alert={errCompany}
                           />
                         </div>
                       </div>
@@ -96,6 +108,7 @@ export const CreateMotivation = (props: CreateMotivationType) => {
                           name="motivation_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

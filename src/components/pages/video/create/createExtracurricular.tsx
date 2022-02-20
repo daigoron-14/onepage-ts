@@ -21,6 +21,11 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
   const [get, setGet] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errGet, setErrGet] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -47,6 +52,10 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.extra_file);
+        setErrTitle(err.ressponse.data.extra_title);
+        setErrGet(err.ressponse.data.extra_get);
+        setErrText(err.ressponse.data.extra_text);
       });
   };
 
@@ -75,6 +84,7 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -82,12 +92,14 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
                             name="extracurricular_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <BasicInput
                             title="その経験を通じて得たもの"
                             name="extracurricular_get"
                             placeholder=""
                             setValue={setGet}
+                            alert={errGet}
                           />
                         </div>
                       </div>
@@ -97,6 +109,7 @@ export const CreateExtracurricular = (props: CreateExtracurricularType) => {
                           name="extracurricular_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

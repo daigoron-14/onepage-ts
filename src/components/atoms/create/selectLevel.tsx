@@ -7,10 +7,11 @@ type SelctLanguageType = {
   name: string;
   setLevel: Function;
   value: string;
+  alert?: string;
 };
 
 export const SelectLevel = (props: SelctLanguageType) => {
-  const { title, name, setLevel, value } = props;
+  const { title, name, setLevel, value, alert } = props;
 
   const onChangeValue = (e: ChangeEvent<HTMLSelectElement>) =>
     setLevel(e.target.value);
@@ -33,7 +34,7 @@ export const SelectLevel = (props: SelctLanguageType) => {
         </div>
       </div>
       <div className="select-alert">
-        <div className="select-alert-item">必須項目です</div>
+        <div className="select-alert-item">{alert}</div>
       </div>
     </SBox>
   );

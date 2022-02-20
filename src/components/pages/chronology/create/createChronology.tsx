@@ -26,6 +26,14 @@ export const CreateChronology = (props: CreateChronologyType) => {
   const [start, setStart] = useState("");
   const [get, setGet] = useState("");
 
+  const [errImage, setErrImage] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errYear, setErrYear] = useState("");
+  const [errMonth, setErrMonth] = useState("");
+  const [errContaint, setErrContaint] = useState("");
+  const [errStart, setErrStart] = useState("");
+  const [errGet, setErrGet] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -58,6 +66,12 @@ export const CreateChronology = (props: CreateChronologyType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrImage(err.ressponse.data.chrono_image);
+        setErrYear(err.ressponse.data.chrono_year);
+        setErrMonth(err.ressponse.data.chrono_month);
+        setErrContaint(err.ressponse.data.chrono_containt);
+        setErrStart(err.ressponse.data.chrono_start);
+        setErrGet(err.ressponse.data.chrono_get);
       });
   };
 
@@ -87,6 +101,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                           labels="画像をアップロード"
                           setValue={setImage}
                           accept="image/*"
+                          alert={errImage}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -94,6 +109,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                             name="chronology_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <SelectDay
                             title="いつ経験したか"
@@ -104,6 +120,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                             setYear={setYear}
                             setMonth={setMonth}
                             setDay={setMonth}
+                            alert={errYear}
                           />
                         </div>
                       </div>
@@ -113,6 +130,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                           name="chronology_containt"
                           lines="basic-textarea-text"
                           setValue={setContaint}
+                          alert={errContaint}
                         />
                       </div>
                       <div className="basicBox-item-containt">
@@ -121,6 +139,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                           name="chronology_start"
                           lines="basic-textarea-text"
                           setValue={setStart}
+                          alert={errStart}
                         />
                       </div>
                       <div className="basicBox-item-containt">
@@ -129,6 +148,7 @@ export const CreateChronology = (props: CreateChronologyType) => {
                           name="chronology_get"
                           lines="basic-textarea-text"
                           setValue={setGet}
+                          alert={errGet}
                         />
                       </div>
                     </div>

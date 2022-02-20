@@ -7,10 +7,11 @@ type SelctLanguageType = {
   name: string;
   setLanguage: Function;
   value: string;
+  alert?: string;
 };
 
 export const SelectLanguage = (props: SelctLanguageType) => {
-  const { title, name, setLanguage, value } = props;
+  const { title, name, setLanguage, value, alert } = props;
 
   const onChangeValue = (e: ChangeEvent<HTMLSelectElement>) =>
     setLanguage(e.target.value);
@@ -43,7 +44,7 @@ export const SelectLanguage = (props: SelctLanguageType) => {
         </div>
       </div>
       <div className="select-alert">
-        <div className="select-alert-item">必須項目です</div>
+        <div className="select-alert-item">{alert}</div>
       </div>
     </SBox>
   );

@@ -22,6 +22,12 @@ export const CreateAddress = (props: CreateAddressType) => {
   const [room, setRoom] = useState("");
   const [update, setUpdate] = useState(false);
 
+  const [errPostcard, setErrPostcard] = useState("");
+  const [errFixedPhone, setErrFixedPhone] = useState("");
+  const [errAddress, setErrAddress] = useState("");
+  const [errHouce, setErrHouce] = useState("");
+  const [errBuilding, setErrBuilding] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -76,6 +82,10 @@ export const CreateAddress = (props: CreateAddressType) => {
         })
         .catch((err) => {
           console.log(err.response.data);
+          setErrPostcard(err.ressponse.data.postcard);
+          setErrFixedPhone(err.ressponse.data.fixed_phone);
+          setErrAddress(err.ressponse.data.address);
+          setErrHouce(err.ressponse.data.houce);
         });
     } else {
       axios
@@ -90,6 +100,10 @@ export const CreateAddress = (props: CreateAddressType) => {
         })
         .catch((err) => {
           console.log(err.response);
+          setErrPostcard(err.ressponse.data.postcard);
+          setErrFixedPhone(err.ressponse.data.fixed_phone);
+          setErrAddress(err.ressponse.data.address);
+          setErrHouce(err.ressponse.data.houce);
         });
     }
   };

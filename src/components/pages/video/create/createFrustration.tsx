@@ -22,6 +22,11 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
   const [event, setEvent] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errEvent, setErrEvent] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -48,6 +53,10 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.frustration_file);
+        setErrTitle(err.ressponse.data.frustration_title);
+        setErrEvent(err.ressponse.data.frustration_event);
+        setErrText(err.ressponse.data.frustration_text);
       });
   };
 
@@ -76,6 +85,7 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -83,12 +93,14 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
                             name="frustration_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <BasicInput
                             title="挫折したイベント"
                             name="frustration_event"
                             placeholder=""
                             setValue={setEvent}
+                            alert={errEvent}
                           />
                         </div>
                       </div>
@@ -98,6 +110,7 @@ export const CreateFrustration = (props: CreateFrustrationType) => {
                           name="frustration_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

@@ -21,6 +21,11 @@ export const CreateInterview = (props: CreateInterviewType) => {
   const [relationship, setRelationship] = useState("");
   const [text, setText] = useState("");
 
+  const [errVideo, setErrVideo] = useState("");
+  const [errTitle, setErrTitle] = useState("");
+  const [errRelationship, setErrRelationship] = useState("");
+  const [errText, setErrText] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -47,6 +52,10 @@ export const CreateInterview = (props: CreateInterviewType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrVideo(err.ressponse.data.interview_file);
+        setErrTitle(err.ressponse.data.interview_title);
+        setErrRelationship(err.ressponse.data.interview_relationship);
+        setErrText(err.ressponse.data.interview_text);
       });
   };
 
@@ -75,6 +84,7 @@ export const CreateInterview = (props: CreateInterviewType) => {
                           title="ファイル選択"
                           labels="動画をアップロード"
                           setValue={setVideo}
+                          alert={errVideo}
                         />
                         <div className="basicBox-item-grid-item">
                           <BasicInput
@@ -82,12 +92,14 @@ export const CreateInterview = (props: CreateInterviewType) => {
                             name="interview_title"
                             placeholder=""
                             setValue={setTitle}
+                            alert={errTitle}
                           />
                           <BasicInput
                             title="インタビューした人との間柄"
                             name="interview_relationship"
                             placeholder=""
                             setValue={setRelationship}
+                            alert={errRelationship}
                           />
                         </div>
                       </div>
@@ -97,6 +109,7 @@ export const CreateInterview = (props: CreateInterviewType) => {
                           name="interview_text"
                           lines="basic-textarea-text"
                           setValue={setText}
+                          alert={errText}
                         />
                       </div>
                     </div>

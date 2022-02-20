@@ -20,6 +20,10 @@ export const CreateHobby = (props: CreateHobbyType) => {
   const [start, setStart] = useState("");
   const [good, setGood] = useState("");
 
+  const [errName, setErrName] = useState("");
+  const [errStart, setErrStart] = useState("");
+  const [errGood, setErrGood] = useState("");
+
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
@@ -43,6 +47,9 @@ export const CreateHobby = (props: CreateHobbyType) => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        setErrName(err.ressponse.data.hobby_name);
+        setErrStart(err.ressponse.data.hobby_start);
+        setErrGood(err.ressponse.data.hobby_good);
       });
   };
 
@@ -72,6 +79,7 @@ export const CreateHobby = (props: CreateHobbyType) => {
                         name="hobby_name"
                         placeholder=""
                         setValue={setName}
+                        alert={errName}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -80,6 +88,7 @@ export const CreateHobby = (props: CreateHobbyType) => {
                         name="hobby_start"
                         lines="basic-textarea-text-3"
                         setValue={setStart}
+                        alert={errStart}
                       />
                     </div>
                     <div className="basicBox-item-containt">
@@ -88,6 +97,7 @@ export const CreateHobby = (props: CreateHobbyType) => {
                         name="hobby_good"
                         lines="basic-textarea-text-3"
                         setValue={setGood}
+                        alert={errGood}
                       />
                     </div>
                   </div>
