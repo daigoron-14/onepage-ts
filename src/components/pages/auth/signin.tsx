@@ -62,6 +62,10 @@ export const SignIn = () => {
       });
   };
 
+  const OnClickNavigate = () => {
+    navigate("/signup")
+  }
+
   return (
     <SignUpBox>
       <div className="signup-header">
@@ -134,7 +138,7 @@ export const SignIn = () => {
           <button
             className="signup-button-item-signup"
             type="button"
-            onClick={signinData}
+            onClick={OnClickNavigate}
           >
             sign up
           </button>
