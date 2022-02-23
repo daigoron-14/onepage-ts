@@ -20,6 +20,7 @@ import { CreateTalent } from "../pages/personal/create/createTalent";
 import { CreateChronology } from "../pages/chronology/create/createChronology";
 import { CreatePage } from "../pages/page/createPage";
 import { SuccessPage } from "../pages/page/successPage";
+import { HomePage } from "../pages/page/homePage";
 
 import { RegisteredChronologyList } from "../pages/chronology/registered/registeredChronologyList";
 import { RegisteredChronologyDetail } from "../pages/chronology/registered/registeredChronologyDetail";
@@ -232,6 +233,9 @@ export const Main = (props: MainType) => {
 
         {/* success */}
         <Route path="/success" element={<SuccessPage />} />
+
+        {/* home */}
+        <Route path="/home" element={<HomePage />} />
       </Routes>
     </MainBox>
   );

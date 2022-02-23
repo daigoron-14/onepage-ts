@@ -43,7 +43,7 @@ export const SignIn = () => {
           .then((res) => {
             localStorage.setItem("userid", res.data.id);
             console.log("myself:", res.data);
-            navigate("/dashboard/create/basic");
+            navigate("/dashboard/home");
           })
           .catch((err) => {
             console.log(err.response.data);
@@ -64,6 +64,23 @@ export const SignIn = () => {
 
   return (
     <SignUpBox>
+      <div className="signup-header">
+        <div className="signup-header-box">
+          <div className="signup-header-label">
+            <h1 className="signup-header-label-item">OnePage</h1>
+          </div>
+          <div className="signup-header-text">
+            <p className="signup-header-text-item">
+              写真や動画をベースとした新しい履歴書の形を提供
+            </p>
+          </div>
+          <div className="signup-header-text">
+            <p className="signup-header-text-item">
+              Web上で情報の登録・編集および履歴書の作成・送信が可能
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="signup-root">
         <div className="signup-label">
           <label className="signup-label-item">sign in</label>
@@ -108,6 +125,19 @@ export const SignIn = () => {
           >
             sign in
           </button>
+          <div className="signup-button-line">
+            <hr className="signup-button-line-hr" />
+            <div className="signup-button-line-text">
+              <span className="signup-button-line-text-item">or</span>
+            </div>
+          </div>
+          <button
+            className="signup-button-item-signup"
+            type="button"
+            onClick={signinData}
+          >
+            sign up
+          </button>
         </div>
       </div>
     </SignUpBox>
@@ -115,12 +145,59 @@ export const SignIn = () => {
 };
 
 const SignUpBox = styled.div`
-  margin-top: 100px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .signup {
+    &-header {
+      width: 98%;
+      min-height: 50vh;
+      margin: 16px;
+      padding-bottom: 30px;
+      background-image: url("https://demos.creative-tim.com/soft-ui-dashboard-pro-react/marketplace/static/media/curved9.ec7010fa.jpg");
+      background: linear-gradient(
+            310deg,
+            rgba(20, 23, 39, 0.6),
+            rgba(58, 65, 111, 0.6)
+          )
+          center center / cover no-repeat,
+        url("https://demos.creative-tim.com/soft-ui-dashboard-pro-react/marketplace/static/media/curved9.ec7010fa.jpg")
+          transparent;
+      border-radius: 0.75rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &-box {
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &-label {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        &-item {
+          color: #fff;
+          font-weight: 600;
+          font-size: 60px;
+        }
+      }
+
+      &-text {
+        margin-bottom: 10px;
+        &-item {
+          color: #fff;
+          font-weight: 500;
+        }
+      }
+    }
+
     &-root {
+      margin-top: -120px;
       color: rgba(0, 0, 0, 0.87);
       transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       overflow: hidden;
@@ -128,7 +205,7 @@ const SignUpBox = styled.div`
       align-items: center;
       flex-direction: column;
       position: relative;
-      min-width: 60%;
+      width: 25%;
       overflow-wrap: break-word;
       background-color: rgb(255, 255, 255);
       background-clip: border-box;
@@ -228,11 +305,12 @@ const SignUpBox = styled.div`
     }
 
     &-button {
-      margin-bottom: 30px;
+      margin-top: 20px;
+      margin-bottom: 40px;
       opacity: 1;
       background: transparent;
       color: rgb(52, 71, 103);
-      width: 50%;
+      width: 90%;
 
       &-item {
         position: relative;
@@ -280,6 +358,105 @@ const SignUpBox = styled.div`
         color: rgb(255, 255, 255);
         background-size: 150% !important;
         background-position-x: 25% !important;
+
+        &-signup {
+          position: relative;
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+          outline: 0px;
+          border: 0px;
+          margin: 0px;
+          cursor: pointer;
+          vertical-align: middle;
+          appearance: none;
+          text-decoration: none;
+          font-family: Roboto, Helvetica, Arial, sans-serif;
+          letter-spacing: 0.02857em;
+          min-width: 64px;
+          width: 100%;
+          display: inline-flex;
+          -webkit-box-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          align-items: center;
+          font-size: 0.75rem;
+          font-weight: 700;
+          border-radius: 0.5rem;
+          line-height: 1.4;
+          text-align: center;
+          text-transform: uppercase;
+          user-select: none;
+          transition: all 150ms ease-in 0s;
+          min-height: 2.5rem;
+          box-shadow: rgb(0 0 0 / 11%) 0rem 0.25rem 0.4375rem -0.0625rem,
+            rgb(0 0 0 / 7%) 0rem 0.125rem 0.25rem -0.0625rem;
+          padding: 0.75rem 1.5rem;
+          background-image: linear-gradient(
+            310deg,
+            rgb(20, 23, 39),
+            rgb(58, 65, 111)
+          );
+          background-position-y: initial;
+          background-repeat: initial;
+          background-attachment: initial;
+          background-origin: initial;
+          background-clip: initial;
+          background-color: initial;
+          color: rgb(255, 255, 255);
+          background-size: 150% !important;
+          background-position-x: 25% !important;
+        }
+      }
+
+      &-line {
+        position: relative;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        opacity: 1;
+        background: transparent;
+        color: rgb(52, 71, 103);
+        &-hr {
+          flex-shrink: 0;
+          border-top: 0px solid rgba(0, 0, 0, 0.12);
+          border-right: 0px solid rgba(0, 0, 0, 0.12);
+          border-left: 0px solid rgba(0, 0, 0, 0.12);
+          background-color: transparent;
+          height: 0.0625rem;
+          margin: 1rem 0px;
+          border-bottom: none;
+          opacity: 0.25;
+          background-image: linear-gradient(
+            to right,
+            rgba(52, 71, 103, 0),
+            rgba(52, 71, 103, 0.5),
+            rgba(52, 71, 103, 0)
+          ) !important;
+        }
+        &-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          padding-left: 12px;
+          padding-right: 12px;
+          line-height: 1;
+          opacity: 1;
+          background: rgb(255, 255, 255);
+          color: rgb(52, 71, 103);
+          transform: translate(-50%, -60%);
+          &-item {
+            margin: 0px;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            letter-spacing: 0.02857em;
+            opacity: 1;
+            text-transform: none;
+            vertical-align: unset;
+            text-decoration: none;
+            color: rgb(131, 146, 171);
+            font-weight: 500;
+          }
+        }
       }
     }
   }

@@ -1,10 +1,13 @@
 import { useState, useEffect, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isCompany, setIsCompany] = useState(false);
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [nameError, setNameError] = useState("");
@@ -12,11 +15,22 @@ export const SignUp = () => {
   const [passwordError, setPasswordError] = useState("");
   const [rePasswordError, setRePasswordError] = useState("");
 
+  useEffect(() => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userid");
+  });
+
   const createUser = () => {
     if (password === rePassword) {
       const data = {
         name: name,
         email: email,
+        password: password,
+        is_company: isCompany
+      };
+
+      const authData = {
+        username: email,
         password: password
       };
 
@@ -29,6 +43,31 @@ export const SignUp = () => {
           setRePasswordError("");
           setNameError("");
           setEmailError("");
+          axios
+            .post("https://onepage-server.com/auth/", authData)
+            .then((res) => {
+              localStorage.setItem("token", res.data.token);
+              setEmailError("");
+              console.log(localStorage.getItem("token"));
+              console.log(res.data);
+              axios
+                .get("https://onepage-server.com/onepage/myself/", {
+                  headers: {
+                    Authorization: `Token ${localStorage.getItem("token")}`
+                  }
+                })
+                .then((res) => {
+                  localStorage.setItem("userid", res.data.id);
+                  console.log("myself:", res.data);
+                  navigate("/dashboard/home");
+                })
+                .catch((err) => {
+                  console.log(err.response.data);
+                });
+            })
+            .catch((err) => {
+              console.log(err.response.data);
+            });
         })
         .catch((err) => {
           setNameError(err.response.data.name);
@@ -52,8 +91,33 @@ export const SignUp = () => {
   const onChangeRePassword = (e: ChangeEvent<HTMLInputElement>) =>
     setRePassword(e.target.value);
 
+  const onChangeIsCompany = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === "true") {
+      setIsCompany(true);
+    } else {
+      setIsCompany(false);
+    }
+  };
+
   return (
     <SignUpBox>
+      <div className="signup-header">
+        <div className="signup-header-box">
+          <div className="signup-header-label">
+            <h1 className="signup-header-label-item">OnePage</h1>
+          </div>
+          <div className="signup-header-text">
+            <p className="signup-header-text-item">
+              写真や動画をベースとした新しい履歴書の形を提供
+            </p>
+          </div>
+          <div className="signup-header-text">
+            <p className="signup-header-text-item">
+              Web上で情報の登録・編集および履歴書の作成・送信が可能
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="signup-root">
         <div className="signup-label">
           <label className="signup-label-item">sign up</label>
@@ -116,6 +180,24 @@ export const SignUp = () => {
                 <span className="signup-alert-item">{rePasswordError}</span>
               </div>
             </div>
+            <div className="signup-form-container">
+              <div className="signup-form-containt-check">
+                <input
+                  className="signup-form-input-check"
+                  type="checkbox"
+                  name="isCompany"
+                  placeholder="企業アカウントですか？"
+                  onChange={onChangeIsCompany}
+                  value="true"
+                />
+                <span className="signup-form-input-check-text">
+                  企業アカウントですか？
+                </span>
+              </div>
+              <div className="signup-alert">
+                <span className="signup-alert-item">{rePasswordError}</span>
+              </div>
+            </div>
           </form>
         </div>
         <div className="signup-button">
@@ -133,12 +215,59 @@ export const SignUp = () => {
 };
 
 const SignUpBox = styled.div`
-  margin-top: 100px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .signup {
+    &-header {
+      width: 98%;
+      min-height: 50vh;
+      margin: 16px;
+      padding-bottom: 30px;
+      background-image: url("https://demos.creative-tim.com/soft-ui-dashboard-pro-react/marketplace/static/media/curved9.ec7010fa.jpg");
+      background: linear-gradient(
+            310deg,
+            rgba(20, 23, 39, 0.6),
+            rgba(58, 65, 111, 0.6)
+          )
+          center center / cover no-repeat,
+        url("https://demos.creative-tim.com/soft-ui-dashboard-pro-react/marketplace/static/media/curved9.ec7010fa.jpg")
+          transparent;
+      border-radius: 0.75rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &-box {
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &-label {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        &-item {
+          color: #fff;
+          font-weight: 600;
+          font-size: 60px;
+        }
+      }
+
+      &-text {
+        margin-bottom: 10px;
+        &-item {
+          color: #fff;
+          font-weight: 500;
+        }
+      }
+    }
+
     &-root {
+      margin-top: -120px;
       color: rgba(0, 0, 0, 0.87);
       transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       overflow: hidden;
@@ -146,7 +275,7 @@ const SignUpBox = styled.div`
       align-items: center;
       flex-direction: column;
       position: relative;
-      min-width: 60%;
+      min-width: 30%;
       overflow-wrap: break-word;
       background-color: rgb(255, 255, 255);
       background-clip: border-box;
@@ -215,6 +344,15 @@ const SignUpBox = styled.div`
         appearance: none !important;
         transition: box-shadow 150ms ease 0s, border-color 150ms ease 0s,
           padding 150ms ease 0s !important;
+
+        &-check {
+          letter-spacing: 0.00938em;
+          padding: 0.5rem 0.75rem;
+          border: 0.0625rem solid rgb(210, 214, 218);
+          border-radius: 0.5rem;
+          font-size: 0.875rem !important;
+          color: rgb(73, 80, 87) !important;
+        }
       }
       &-input {
         font: inherit;
@@ -232,6 +370,15 @@ const SignUpBox = styled.div`
         height: 1.375rem;
         width: 100% !important;
         padding: 0px !important;
+
+        &-check {
+          width: 13px;
+          margin-right: 10px;
+
+          &-text {
+            color: rgb(133, 133, 133);
+          }
+        }
       }
     }
 
@@ -286,8 +433,8 @@ const SignUpBox = styled.div`
         padding: 0.75rem 1.5rem;
         background-image: linear-gradient(
           310deg,
-          rgb(33, 82, 255),
-          rgb(33, 212, 253)
+          rgb(20, 23, 39),
+          rgb(58, 65, 111)
         );
         background-position-y: initial;
         background-repeat: initial;

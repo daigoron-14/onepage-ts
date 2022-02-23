@@ -1,13 +1,23 @@
 import styled from "styled-components";
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { SideMenu } from "../organizes/sideMenu";
 import { Main } from "../organizes/main";
 import { Header } from "../organizes/header";
 
 export const DashBoard = () => {
+  const navigate = useNavigate();
   const [color, setColor] = useState("");
   const [sideMenuToggle, setSideMenuToggle] = useState(true);
+
+  const userid = localStorage.getItem("userid");
+
+  useEffect(()=> {
+    if (userid == null) {
+      navigate("/signin");
+    }
+  });
 
   return (
     <DashBoardPage>

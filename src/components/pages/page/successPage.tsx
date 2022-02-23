@@ -6,7 +6,7 @@ export const SuccessPage = () => {
   const navigate = useNavigate();
 
   const OnClickLink = () => {
-    navigate("/dashboard");
+    navigate("/dashboard/home");
   };
 
   return (
