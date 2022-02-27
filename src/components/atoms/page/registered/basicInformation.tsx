@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import SchoolIcon from "@material-ui/icons/School";
@@ -33,6 +34,8 @@ export const BasicInfromation = () => {
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get("https://onepage-server.com/onepage/basic/", {
@@ -57,6 +60,7 @@ export const BasicInfromation = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/dashboard/error");
       });
 
     axios
@@ -74,6 +78,7 @@ export const BasicInfromation = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/dashboard/error");
       });
 
     axios
@@ -93,6 +98,7 @@ export const BasicInfromation = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/dashboard/error");
       });
   }, []);
 
@@ -100,13 +106,21 @@ export const BasicInfromation = () => {
     const birthdayY = Number(birth_y);
     const birthdayM = Number(birth_m) - 1;
     const birthdayD = Number(birth_d);
-    const birthday = new Date(birthdayY, birthdayM, birthdayD);
     const now = new Date();
     const nowY = now.getFullYear();
     const nowM = now.getMonth();
     const nowD = now.getDate();
-    const today = new Date(nowY, nowM, nowD);
-    // setAge(Math.floor((today - birthday) / 31536000000));
+    if (birthdayM == nowM) {
+      if (birthdayD < nowD) {
+        setAge(nowY - birthdayY -1);
+      } else {
+        setAge(nowY - birthdayY);
+      }
+    } else if (birthdayM < nowM) {
+      setAge(nowY - birthdayY);
+    } else {
+      setAge(nowY - birthdayY -1);
+    }
   }, [phone]);
 
   return (

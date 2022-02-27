@@ -16,7 +16,6 @@ import { SideButtonTitle } from "../atoms/sideMenu/sideButtonTitle"
 import { useState, useEffect, memo, useContext } from "react";
 import { PersonalCard } from "../atoms/page/registered/personalCard";
 
-import  logoImage  from "../img/OnePage3.png"
 
 type SideMenuType = {
   color: string;
@@ -63,7 +62,7 @@ export const SideMenu = memo((props: SideMenuType) => {
   return (
     <SideMenuS>
       <ul className="sideMenu">
-        <SideMenuTile image={logoImage} name="丸山 拓夢" />
+        <SideMenuTile />
         <span className="sideMenu-title">OnePage</span>
         <SideButtonPage
           icon={<DescriptionIcon fontSize="small" />}

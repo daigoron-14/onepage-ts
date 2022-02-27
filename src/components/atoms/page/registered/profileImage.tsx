@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
 export const ProfileImage = () => {
   const [image, setImage] = useState("");
+  const navigate = useNavigate();
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -23,6 +25,7 @@ export const ProfileImage = () => {
       })
       .catch((err) => {
         console.log(err.response.data);
+        navigate("/dashboard/error")
       });
   });
 

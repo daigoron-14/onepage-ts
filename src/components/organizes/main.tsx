@@ -21,6 +21,7 @@ import { CreateChronology } from "../pages/chronology/create/createChronology";
 import { CreatePage } from "../pages/page/createPage";
 import { SuccessPage } from "../pages/page/successPage";
 import { HomePage } from "../pages/page/homePage";
+import { ErrorBasicPage } from "../pages/page/errorBasicPage"
 
 import { RegisteredChronologyList } from "../pages/chronology/registered/registeredChronologyList";
 import { RegisteredChronologyDetail } from "../pages/chronology/registered/registeredChronologyDetail";
@@ -236,6 +237,9 @@ export const Main = (props: MainType) => {
 
         {/* home */}
         <Route path="/home" element={<HomePage />} />
+
+        {/* errorBasic */}
+        <Route path="/error" element={<ErrorBasicPage />} />
       </Routes>
     </MainBox>
   );

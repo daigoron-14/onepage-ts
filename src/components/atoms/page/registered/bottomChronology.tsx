@@ -29,7 +29,7 @@ export const BottomChronology = (props: BottomChronologyType) => {
   useEffect(() => {
     if (label === "4") {
       axios
-        .get(`https://onepage-server.com/chrono/${id}/`, {
+        .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
           headers: {
             Authorization: `Token ${token}`
           }
