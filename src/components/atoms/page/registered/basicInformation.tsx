@@ -56,6 +56,8 @@ export const BasicInfromation = () => {
           setBirth_d(res.data[0].birthday_day);
           setMail(res.data[0].mailaddress);
           setPhone(res.data[0].phonenumber);
+        } else {
+          navigate("/dashboard/error");
         }
       })
       .catch((err) => {
@@ -74,6 +76,8 @@ export const BasicInfromation = () => {
           setSchool(res.data[0].school);
           setFaculty(res.data[0].faculty);
           setDepartment(res.data[0].department);
+        } else {
+          navigate("/dashboard/error");
         }
       })
       .catch((err) => {
@@ -94,6 +98,8 @@ export const BasicInfromation = () => {
           setHouce(res.data[0].houce);
           setBuilding(res.data[0].building);
           setRoom(res.data[0].room);
+        } else {
+          navigate("/dashboard/error");
         }
       })
       .catch((err) => {

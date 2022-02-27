@@ -23,12 +23,11 @@ export const ProfileImage = () => {
           setImage(res.data[0].id_photo);
           console.log("res", res.data)
         } else {
-          console.log("else", res.data)
+          navigate("/dashboard/error")
         }
       })
       .catch((err) => {
         console.log(err.response.data);
-        navigate("/dashboard/error")
       });
   });
 
