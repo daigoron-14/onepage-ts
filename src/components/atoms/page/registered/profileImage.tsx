@@ -21,6 +21,9 @@ export const ProfileImage = () => {
       .then((res) => {
         if (res.data.length === 1) {
           setImage(res.data[0].id_photo);
+          console.log("res", res.data)
+        } else {
+          console.log("else", res.data)
         }
       })
       .catch((err) => {
