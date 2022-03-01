@@ -6,7 +6,7 @@ export const ErrorBasicPage = () => {
   const navigate = useNavigate();
 
   const OnClickLink = () => {
-    navigate("/dashboard");
+    navigate("/dashboard/home");
   };
 
   return (
