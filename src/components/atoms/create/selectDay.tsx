@@ -96,7 +96,7 @@ export const SelectDay = (props: SelectDayType) => {
               <option value="2030">2030</option>
             </select>
           </form>
-          　<span>年</span>
+          <span>年</span>
         </div>
         <div className="select-input-item">
           <form action="">
@@ -116,7 +116,7 @@ export const SelectDay = (props: SelectDayType) => {
               <option value="12">12</option>
             </select>
           </form>
-          　<span>月</span>
+          <span>月</span>
         </div>
         {dayflag && (
           <div className="select-input-item">
@@ -156,7 +156,7 @@ export const SelectDay = (props: SelectDayType) => {
                 <option value="31">31</option>
               </select>
             </form>
-            　<span>日</span>
+            <span>日</span>
           </div>
         )}
       </div>

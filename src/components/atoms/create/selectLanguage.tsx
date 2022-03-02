@@ -27,6 +27,7 @@ export const SelectLanguage = (props: SelctLanguageType) => {
         <div className="select-input-item">
           <select name={name} onChange={onChangeValue}>
             <option value={value}>{value}</option>
+            <option value="">回答なし</option>
             <option value="英語">英語</option>
             <option value="中国語(繁体）">中国語(繁体)</option>
             <option value="中国語（簡体）">中国語(簡体)</option>

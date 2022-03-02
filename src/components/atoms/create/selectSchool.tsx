@@ -25,6 +25,7 @@ export const SelectSchool = (props: SelectSchoolType) => {
         <div className="select-input-item">
           <select name="university" onChange={onChangeValue}>
             <option value={value}>{value}</option>
+            <option value="">回答なし</option>
             <option value="大学">大学</option>
             <option value="短期大学">短期大学</option>
             <option value="大学院">大学院</option>

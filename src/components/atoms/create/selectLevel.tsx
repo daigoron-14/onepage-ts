@@ -27,6 +27,7 @@ export const SelectLevel = (props: SelctLanguageType) => {
         <div className="select-input-item">
           <select name={name} onChange={onChangeValue}>
             <option value={value}>{value}</option>
+            <option value="">回答なし</option>
             <option value="日常会話レベル">日常会話レベル</option>
             <option value="ビジネスレベル">ビジネスレベル</option>
             <option value="ネイティブレベル">ネイティブレベル</option>
