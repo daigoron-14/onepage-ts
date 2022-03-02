@@ -95,7 +95,7 @@ export const CreateLanguage = (props: CreateLanguageType) => {
         });
     } else {
       axios
-        .put(`http://127.0.0.1:8000/onepage/language/${userid}/`, data, {
+        .put(`https://onepage-server.com/onepage/language/${userid}/`, data, {
           headers: {
             Authorization: `Token ${token}`
           }
