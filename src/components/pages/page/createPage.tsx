@@ -131,6 +131,7 @@ export const CreatePage = (props: CreatePageType) => {
   const CreatePage = () => {
     const data = {
       user: userid,
+      auth: token,
       page_company: companyName,
       motivation_id: motivationId,
       selfproduce_id: selfproduceId,
