@@ -98,7 +98,7 @@ export const LanguageSkill = (props: LanguageSkillType) => {
 
   return (
     <LanguageSkills>
-      {language === "" ? (
+      {language === "----" ? (
         <div className="language-level-0">
           <div className="language-skill">
             <h4 className="language-skill-title-0">{title}</h4>
