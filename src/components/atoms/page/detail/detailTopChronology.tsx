@@ -152,7 +152,7 @@ export const DetailTopChronology = (props: TopChronologyType) => {
         }
       }
     }
-  }, []);
+  }, [auth]);
 
   return (
     <TopChronologies>

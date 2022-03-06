@@ -109,7 +109,7 @@ export const DetailBottomChronology = (props: BottomChronologyType) => {
         }
       }
     }
-  }, []);
+  }, [auth]);
 
   return (
     <BottomChronologies>
