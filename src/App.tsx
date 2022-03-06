@@ -35,7 +35,6 @@ export default function App() {
       </BrowserRouter>
     </div>
   );
-}
 
 const RightSide = styled.div`
   margin-left: 254px;

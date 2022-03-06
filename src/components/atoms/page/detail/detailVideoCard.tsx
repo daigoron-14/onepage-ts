@@ -8,7 +8,7 @@ type VideoCardType = {
   setValue: Function;
   value: boolean;
   label: string;
-  auth: string;
+  auth?: string;
 };
 
 export const DetailVideoCard = (props: VideoCardType) => {

@@ -9,7 +9,7 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 type PersonalCardType = {
   label: string;
   id: string;
-  auth: string;
+  auth?: string;
 };
 
 export const DetailPersonalCard = (props: PersonalCardType) => {

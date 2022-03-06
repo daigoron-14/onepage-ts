@@ -7,7 +7,7 @@ import Brightness1Icon from "@material-ui/icons/Brightness1";
 type BottomChronologyType = {
   label: string;
   id: string;
-  auth: string;
+  auth?: string;
 };
 
 export const DetailBottomChronology = (props: BottomChronologyType) => {

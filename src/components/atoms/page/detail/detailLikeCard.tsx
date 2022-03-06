@@ -7,7 +7,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 type LikeCardType = {
   label: string;
   id: string;
-  auth: string;
+  auth?: string;
 };
 
 export const DetailLikeCard = (props: LikeCardType) => {

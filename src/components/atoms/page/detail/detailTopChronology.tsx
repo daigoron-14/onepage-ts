@@ -8,7 +8,7 @@ import { LabelOff } from "@material-ui/icons";
 type TopChronologyType = {
   label: string;
   id: string;
-  auth: string;
+  auth?: string;
 };
 
 export const DetailTopChronology = (props: TopChronologyType) => {
