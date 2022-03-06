@@ -8,10 +8,11 @@ type VideoCardType = {
   setValue: Function;
   value: boolean;
   label: string;
+  auth: string;
 };
 
 export const DetailVideoCard = (props: VideoCardType) => {
-  const { title, setValue, value, id, label } = props;
+  const { title, setValue, value, id, label, auth } = props;
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -39,138 +40,260 @@ export const DetailVideoCard = (props: VideoCardType) => {
   const OnClickToggle = () => setValue(!value);
 
   useEffect(() => {
-    if (id != "") {
-      if (label === "motiv") {
-        axios
-          .get(`https://onepage-server.com/onepage/motiv/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setMotivationVideo(res.data.motivation_file);
-            setMotivationText(res.data.motivation_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "self") {
-        axios
-          .get(`https://onepage-server.com/onepage/self/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setSelfproduceVideo(res.data.selfproduce_file);
-            setSelfproduceText(res.data.selfproduce_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "extra") {
-        axios
-          .get(`https://onepage-server.com/onepage/extra/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setExtracurricularVideo(res.data.extra_file);
-            setExtracurricularText(res.data.extra_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "inter") {
-        axios
-          .get(`https://onepage-server.com/onepage/inter/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setInterviewVideo(res.data.interview_file);
-            setInterviewText(res.data.interview_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "frust") {
-        axios
-          .get(`https://onepage-server.com/onepage/frust/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setFrustrationVideo(res.data.frustration_file);
-            setFrustrationText(res.data.frustration_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "other1") {
-        axios
-          .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setOtherVideo1(res.data.other_file);
-            setOtherLabel1(res.data.other_label);
-            setOtherText1(res.data.other_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "other2") {
-        axios
-          .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setOtherVideo2(res.data.other_file);
-            setOtherLabel2(res.data.other_label);
-            setOtherText2(res.data.other_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "other3") {
-        axios
-          .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setOtherVideo3(res.data.other_file);
-            setOtherLabel3(res.data.other_label);
-            setOtherText3(res.data.other_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
+    if (auth !== "") {
+      if (id != "") {
+        if (label === "motiv") {
+          axios
+            .get(`https://onepage-server.com/onepage/motiv/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setMotivationVideo(res.data.motivation_file);
+              setMotivationText(res.data.motivation_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "self") {
+          axios
+            .get(`https://onepage-server.com/onepage/self/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setSelfproduceVideo(res.data.selfproduce_file);
+              setSelfproduceText(res.data.selfproduce_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "extra") {
+          axios
+            .get(`https://onepage-server.com/onepage/extra/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setExtracurricularVideo(res.data.extra_file);
+              setExtracurricularText(res.data.extra_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "inter") {
+          axios
+            .get(`https://onepage-server.com/onepage/inter/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setInterviewVideo(res.data.interview_file);
+              setInterviewText(res.data.interview_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "frust") {
+          axios
+            .get(`https://onepage-server.com/onepage/frust/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setFrustrationVideo(res.data.frustration_file);
+              setFrustrationText(res.data.frustration_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other1") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo1(res.data.other_file);
+              setOtherLabel1(res.data.other_label);
+              setOtherText1(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other2") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo2(res.data.other_file);
+              setOtherLabel2(res.data.other_label);
+              setOtherText2(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other3") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo3(res.data.other_file);
+              setOtherLabel3(res.data.other_label);
+              setOtherText3(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
+      }
+    } else {
+      console.log("not authentication");
+      if (id != "") {
+        if (label === "motiv") {
+          axios
+            .get(`https://onepage-server.com/onepage/motiv/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setMotivationVideo(res.data.motivation_file);
+              setMotivationText(res.data.motivation_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "self") {
+          axios
+            .get(`https://onepage-server.com/onepage/self/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setSelfproduceVideo(res.data.selfproduce_file);
+              setSelfproduceText(res.data.selfproduce_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "extra") {
+          axios
+            .get(`https://onepage-server.com/onepage/extra/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setExtracurricularVideo(res.data.extra_file);
+              setExtracurricularText(res.data.extra_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "inter") {
+          axios
+            .get(`https://onepage-server.com/onepage/inter/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setInterviewVideo(res.data.interview_file);
+              setInterviewText(res.data.interview_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "frust") {
+          axios
+            .get(`https://onepage-server.com/onepage/frust/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setFrustrationVideo(res.data.frustration_file);
+              setFrustrationText(res.data.frustration_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other1") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo1(res.data.other_file);
+              setOtherLabel1(res.data.other_label);
+              setOtherText1(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other2") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo2(res.data.other_file);
+              setOtherLabel2(res.data.other_label);
+              setOtherText2(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "other3") {
+          axios
+            .get(`https://onepage-server.com/onepage/otherd/${id}/`, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setOtherVideo3(res.data.other_file);
+              setOtherLabel3(res.data.other_label);
+              setOtherText3(res.data.other_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
       }
     }
   }, [id]);

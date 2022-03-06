@@ -4,10 +4,11 @@ import axios from "axios";
 
 type LanguageSkillType = {
   title: string;
+  auth?: string;
 };
 
 export const LanguageSkill = (props: LanguageSkillType) => {
-  const { title } = props;
+  const { title, auth } = props;
 
   const [language, setLanguage] = useState("");
   const [level, setLevel] = useState("");
@@ -17,40 +18,77 @@ export const LanguageSkill = (props: LanguageSkillType) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (title === "第二言語") {
-      axios
-        .get("https://onepage-server.com/onepage/language/", {
-          headers: {
-            Authorization: `Token ${token}`
-          }
-        })
-        .then((res) => {
-          if (res.data.length === 1) {
-            setLanguage(res.data[0].second_language);
-            setLevel(res.data[0].second_level);
-          }
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    } else if (title === "第三言語") {
-      axios
-        .get("https://onepage-server.com/onepage/language/", {
-          headers: {
-            Authorization: `Token ${token}`
-          }
-        })
-        .then((res) => {
-          if (res.data.length === 1) {
-            setLanguage(res.data[0].third_language);
-            setLevel(res.data[0].third_level);
-          }
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
+    if (auth !== "") {
+      if (title === "第二言語") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${auth}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setLanguage(res.data[0].second_language);
+              setLevel(res.data[0].second_level);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      } else if (title === "第三言語") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${auth}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setLanguage(res.data[0].third_language);
+              setLevel(res.data[0].third_level);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      }
+    } else {
+      if (title === "第二言語") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setLanguage(res.data[0].second_language);
+              setLevel(res.data[0].second_level);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      } else if (title === "第三言語") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setLanguage(res.data[0].third_language);
+              setLevel(res.data[0].third_level);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      }
     }
-  });
+  }, [auth]);
+
 
   useEffect(() => {
     if (language === "インドネシア語") {

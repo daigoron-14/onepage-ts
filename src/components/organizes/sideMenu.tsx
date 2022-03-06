@@ -626,7 +626,7 @@ export const SideMenu = memo((props: SideMenuType) => {
   );
 });
 
-const SideMenuS = styled.div`
+export const SideMenuS = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1200;

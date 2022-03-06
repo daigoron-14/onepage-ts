@@ -8,7 +8,13 @@ import HomeIcon from "@material-ui/icons/Home";
 import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import EmailIcon from "@material-ui/icons/Email";
 
-export const BasicInfromation = () => {
+type BasicInfromationType = {
+  auth?: string;
+}
+
+export const BasicInfromation = (props: BasicInfromationType) => {
+  const { auth } = props;
+
   const [first_kanji, setFirst_kanji] = useState("");
   const [last_kanji, setLast_kanji] = useState("");
   const [first_kana, setFirst_kana] = useState("");
@@ -35,78 +41,129 @@ export const BasicInfromation = () => {
   const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
-
   useEffect(() => {
-    axios
-      .get("https://onepage-server.com/onepage/basic/", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Token ${token}`
-        }
-      })
-      .then((res) => {
-        if (res.data.length === 1) {
-          setFirst_kanji(res.data[0].first_name_kanji);
-          setLast_kanji(res.data[0].last_name_kanji);
-          setFirst_kana(res.data[0].first_name_kana);
-          setLast_kana(res.data[0].last_name_kana);
-          setGender(res.data[0].gender);
-          setBirth_y(res.data[0].birthday_year);
-          setBirth_m(res.data[0].birthday_month);
-          setBirth_d(res.data[0].birthday_day);
-          setMail(res.data[0].mailaddress);
-          setPhone(res.data[0].phonenumber);
-        } else {
-          navigate("/dashboard/error");
-        }
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        navigate("/dashboard/error");
-      });
+    if (auth !== "") {
+      axios
+        .get("https://onepage-server.com/onepage/basic/", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${auth}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setFirst_kanji(res.data[0].first_name_kanji);
+            setLast_kanji(res.data[0].last_name_kanji);
+            setFirst_kana(res.data[0].first_name_kana);
+            setLast_kana(res.data[0].last_name_kana);
+            setGender(res.data[0].gender);
+            setBirth_y(res.data[0].birthday_year);
+            setBirth_m(res.data[0].birthday_month);
+            setBirth_d(res.data[0].birthday_day);
+            setMail(res.data[0].mailaddress);
+            setPhone(res.data[0].phonenumber);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+      axios
+        .get("https://onepage-server.com/onepage/education/", {
+          headers: {
+            Authorization: `Token ${auth}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setSchool(res.data[0].school);
+            setFaculty(res.data[0].faculty);
+            setDepartment(res.data[0].department);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+      axios
+        .get("https://onepage-server.com/onepage/address/", {
+          headers: {
+            Authorization: `Token ${auth}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setPostcard(res.data[0].postcard);
+            setAddress(res.data[0].address);
+            setHouce(res.data[0].houce);
+            setBuilding(res.data[0].building);
+            setRoom(res.data[0].room);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+    } else {
+      axios
+        .get("https://onepage-server.com/onepage/basic/", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${token}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setFirst_kanji(res.data[0].first_name_kanji);
+            setLast_kanji(res.data[0].last_name_kanji);
+            setFirst_kana(res.data[0].first_name_kana);
+            setLast_kana(res.data[0].last_name_kana);
+            setGender(res.data[0].gender);
+            setBirth_y(res.data[0].birthday_year);
+            setBirth_m(res.data[0].birthday_month);
+            setBirth_d(res.data[0].birthday_day);
+            setMail(res.data[0].mailaddress);
+            setPhone(res.data[0].phonenumber);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
 
-    axios
-      .get("https://onepage-server.com/onepage/education/", {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      })
-      .then((res) => {
-        if (res.data.length === 1) {
-          setSchool(res.data[0].school);
-          setFaculty(res.data[0].faculty);
-          setDepartment(res.data[0].department);
-        } else {
-          navigate("/dashboard/error");
-        }
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        navigate("/dashboard/error");
-      });
+      axios
+        .get("https://onepage-server.com/onepage/education/", {
+          headers: {
+            Authorization: `Token ${token}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setSchool(res.data[0].school);
+            setFaculty(res.data[0].faculty);
+            setDepartment(res.data[0].department);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
 
-    axios
-      .get("https://onepage-server.com/onepage/address/", {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      })
-      .then((res) => {
-        if (res.data.length === 1) {
-          setPostcard(res.data[0].postcard);
-          setAddress(res.data[0].address);
-          setHouce(res.data[0].houce);
-          setBuilding(res.data[0].building);
-          setRoom(res.data[0].room);
-        } else {
-          navigate("/dashboard/error");
-        }
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        navigate("/dashboard/error");
-      });
-  }, []);
+      axios
+        .get("https://onepage-server.com/onepage/address/", {
+          headers: {
+            Authorization: `Token ${token}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setPostcard(res.data[0].postcard);
+            setAddress(res.data[0].address);
+            setHouce(res.data[0].houce);
+            setBuilding(res.data[0].building);
+            setRoom(res.data[0].room);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+    }
+  }, [auth]);
 
   useEffect(() => {
     const birthdayY = Number(birth_y);

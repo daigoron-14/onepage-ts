@@ -7,10 +7,11 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 type LikeCardType = {
   label: string;
   id: string;
+  auth: string;
 };
 
 export const DetailLikeCard = (props: LikeCardType) => {
-  const { label, id } = props;
+  const { label, id, auth } = props;
 
   const [likeImage1, setLikeImage1] = useState("");
   const [likeImage2, setLikeImage2] = useState("");
@@ -26,55 +27,103 @@ export const DetailLikeCard = (props: LikeCardType) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (id != "") {
-      if (label === "1") {
-        axios
-          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setLikeImage1(res.data.like_image);
-            setLikeTitle1(res.data.like_name);
-            setLikeText1(res.data.like_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "2") {
-        axios
-          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setLikeImage2(res.data.like_image);
-            setLikeTitle2(res.data.like_name);
-            setLikeText2(res.data.like_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "3") {
-        axios
-          .get(`https://onepage-server.com/onepage/liked/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setLikeImage3(res.data.like_image);
-            setLikeTitle3(res.data.like_name);
-            setLikeText3(res.data.like_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
+    if (auth !== "") {
+      if (id !== "") {
+        if (label === "1") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setLikeImage1(res.data.like_image);
+              setLikeTitle1(res.data.like_name);
+              setLikeText1(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "2") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setLikeImage2(res.data.like_image);
+              setLikeTitle2(res.data.like_name);
+              setLikeText2(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "3") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              setLikeImage3(res.data.like_image);
+              setLikeTitle3(res.data.like_name);
+              setLikeText3(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
+      }
+    } else {
+      if (id !== "") {
+        if (label === "1") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setLikeImage1(res.data.like_image);
+              setLikeTitle1(res.data.like_name);
+              setLikeText1(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "2") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setLikeImage2(res.data.like_image);
+              setLikeTitle2(res.data.like_name);
+              setLikeText2(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "3") {
+          axios
+            .get(`https://onepage-server.com/onepage/liked/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              setLikeImage3(res.data.like_image);
+              setLikeTitle3(res.data.like_name);
+              setLikeText3(res.data.like_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
       }
     }
   }, [id]);

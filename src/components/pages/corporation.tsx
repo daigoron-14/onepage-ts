@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { SideMenu } from "../organizes/sideMenu";
-import { Main } from "../organizes/main";
+import { CorSideMenu } from "../organizes/corSideMenu";
+import { CorMain } from "../organizes/corMain";
 import { Header } from "../organizes/header";
 
-export const DashBoard = () => {
-  const navigate = useNavigate();
+export const Corporation = () => {
   const [color, setColor] = useState("");
   const [sideMenuToggle, setSideMenuToggle] = useState(true);
+  const navigate = useNavigate();
 
   const userid = localStorage.getItem("userid");
   const company = localStorage.getItem("company");
 
-  useEffect(()=> {
+  useEffect(() => {
     if (userid == null) {
       navigate("/signin");
-    } else if (company == "true") {
+    } else if (company == "false") {
       navigate("/signin");
     }
   });
@@ -25,11 +25,11 @@ export const DashBoard = () => {
   return (
     <DashBoardPage>
       <div className={sideMenuToggle ? "leftSide" : "leftSide-hidden"}>
-        <SideMenu color={color} />
+        <CorSideMenu color={color} />
       </div>
       <div className={sideMenuToggle ? "rightSide" : "rightSide-hidden"}>
         <Header setValue={setSideMenuToggle} value={sideMenuToggle} />
-        <Main setColor={setColor} />
+        <CorMain setColor={setColor} />
       </div>
     </DashBoardPage>
   );

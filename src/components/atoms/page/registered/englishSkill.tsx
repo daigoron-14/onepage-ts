@@ -4,10 +4,11 @@ import axios from "axios";
 
 type EnglishSkillType = {
   title: string;
+  auth?: string;
 };
 
 export const EnglishSkill = (props: EnglishSkillType) => {
-  const { title } = props;
+  const { title, auth } = props;
 
   const [score, setScore] = useState("---");
   const [year, setYear] = useState("");
@@ -17,42 +18,80 @@ export const EnglishSkill = (props: EnglishSkillType) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (title === "TOEIC") {
-      axios
-        .get("https://onepage-server.com/onepage/language/", {
-          headers: {
-            Authorization: `Token ${token}`
-          }
-        })
-        .then((res) => {
-          if (res.data.length === 1) {
-            setScore(res.data[0].toeic);
-            setYear(res.data[0].toeic_year);
-            setMonth(res.data[0].toeic_month);
-          }
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
-    } else if (title === "TOEFL") {
-      axios
-        .get("https://onepage-server.com/onepage/language/", {
-          headers: {
-            Authorization: `Token ${token}`
-          }
-        })
-        .then((res) => {
-          if (res.data.length === 1) {
-            setScore(res.data[0].toefl);
-            setYear(res.data[0].toefl_year);
-            setMonth(res.data[0].toefl_month);
-          }
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-        });
+    if (auth !== "") {
+      if (title === "TOEIC") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${auth}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setScore(res.data[0].toeic);
+              setYear(res.data[0].toeic_year);
+              setMonth(res.data[0].toeic_month);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      } else if (title === "TOEFL") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${auth}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setScore(res.data[0].toefl);
+              setYear(res.data[0].toefl_year);
+              setMonth(res.data[0].toefl_month);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      }
+    } else {
+      if (title === "TOEIC") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setScore(res.data[0].toeic);
+              setYear(res.data[0].toeic_year);
+              setMonth(res.data[0].toeic_month);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      } else if (title === "TOEFL") {
+        axios
+          .get("https://onepage-server.com/onepage/language/", {
+            headers: {
+              Authorization: `Token ${token}`
+            }
+          })
+          .then((res) => {
+            if (res.data.length === 1) {
+              setScore(res.data[0].toefl);
+              setYear(res.data[0].toefl_year);
+              setMonth(res.data[0].toefl_month);
+            }
+          })
+          .catch((err) => {
+            console.log(err.response.data);
+          });
+      }
     }
-  });
+  }, [auth]);
 
   return (
     <EnglishSkills>

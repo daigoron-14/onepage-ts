@@ -9,10 +9,11 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 type PersonalCardType = {
   label: string;
   id: string;
+  auth: string;
 };
 
 export const DetailPersonalCard = (props: PersonalCardType) => {
-  const { label, id } = props;
+  const { label, id, auth } = props;
 
   const [hobbyText, setHobbyText] = useState("");
   const [stressText, setStressText] = useState("");
@@ -25,52 +26,103 @@ export const DetailPersonalCard = (props: PersonalCardType) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (id != "") {
-      if (label === "趣味") {
-        axios
-          .get(`https://onepage-server.com/onepage/hobbyd/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setHobbyTitle(res.data.hobby_name);
-            setHobbyText(res.data.hobby_good);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "特技") {
-        axios
-          .get(`https://onepage-server.com/onepage/talentd/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setTalentTitle(res.data.talent_name);
-            setTalentText(res.data.talent_text);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "ストレス") {
-        axios
-          .get(`https://onepage-server.com/onepage/stressd/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setStressTitle(res.data.stress_name);
-            setStressText(res.data.stress_reason);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
+    if (auth !== "") {
+      if (id != "") {
+        if (label === "趣味") {
+          axios
+            .get(`https://onepage-server.com/onepage/hobbyd/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setHobbyTitle(res.data.hobby_name);
+              setHobbyText(res.data.hobby_good);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "特技") {
+          axios
+            .get(`https://onepage-server.com/onepage/talentd/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setTalentTitle(res.data.talent_name);
+              setTalentText(res.data.talent_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "ストレス") {
+          axios
+            .get(`https://onepage-server.com/onepage/stressd/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setStressTitle(res.data.stress_name);
+              setStressText(res.data.stress_reason);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
+      }
+    } else {
+      if (id != "") {
+        if (label === "趣味") {
+          axios
+            .get(`https://onepage-server.com/onepage/hobbyd/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setHobbyTitle(res.data.hobby_name);
+              setHobbyText(res.data.hobby_good);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "特技") {
+          axios
+            .get(`https://onepage-server.com/onepage/talentd/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setTalentTitle(res.data.talent_name);
+              setTalentText(res.data.talent_text);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "ストレス") {
+          axios
+            .get(`https://onepage-server.com/onepage/stressd/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setStressTitle(res.data.stress_name);
+              setStressText(res.data.stress_reason);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
       }
     }
   }, [id]);

@@ -7,10 +7,11 @@ import Brightness1Icon from "@material-ui/icons/Brightness1";
 type BottomChronologyType = {
   label: string;
   id: string;
+  auth: string;
 };
 
 export const DetailBottomChronology = (props: BottomChronologyType) => {
-  const { label, id } = props;
+  const { label, id, auth } = props;
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -27,46 +28,88 @@ export const DetailBottomChronology = (props: BottomChronologyType) => {
   const [chronoText5, setChornoText5] = useState("");
 
   useEffect(() => {
-    if (id != "") {
-      if (label === "4") {
-        axios
-          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setChornoImage4(res.data.chrono_image);
-            setChornoTitle4(res.data.chrono_title);
-            setChornoText4(res.data.chrono_containt);
-            setChornoYear4(res.data.chrono_year);
-            setChornoMonth4(res.data.chrono_month);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "5") {
-        axios
-          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setChornoImage5(res.data.chrono_image);
-            setChornoTitle5(res.data.chrono_title);
-            setChornoText5(res.data.chrono_containt);
-            setChornoYear5(res.data.chrono_year);
-            setChornoMonth5(res.data.chrono_month);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
+    if (auth !== "") {
+      if (id != "") {
+        if (label === "4") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage4(res.data.chrono_image);
+              setChornoTitle4(res.data.chrono_title);
+              setChornoText4(res.data.chrono_containt);
+              setChornoYear4(res.data.chrono_year);
+              setChornoMonth4(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "5") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage5(res.data.chrono_image);
+              setChornoTitle5(res.data.chrono_title);
+              setChornoText5(res.data.chrono_containt);
+              setChornoYear5(res.data.chrono_year);
+              setChornoMonth5(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
+      }
+    } else {
+      if (id != "") {
+        if (label === "4") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage4(res.data.chrono_image);
+              setChornoTitle4(res.data.chrono_title);
+              setChornoText4(res.data.chrono_containt);
+              setChornoYear4(res.data.chrono_year);
+              setChornoMonth4(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "5") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage5(res.data.chrono_image);
+              setChornoTitle5(res.data.chrono_title);
+              setChornoText5(res.data.chrono_containt);
+              setChornoYear5(res.data.chrono_year);
+              setChornoMonth5(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
       }
     }
-  });
+  }, []);
 
   return (
     <BottomChronologies>

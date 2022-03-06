@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 
-export const ProfileImage = () => {
+type ProfileImageType = {
+  auth?: string;
+}
+
+export const ProfileImage = (props: ProfileImageType) => {
+  const { auth } = props;
+
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
@@ -11,25 +17,42 @@ export const ProfileImage = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get("https://onepage-server.com/onepage/basic/", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Token ${token}`
-        }
-      })
-      .then((res) => {
-        if (res.data.length === 1) {
-          setImage(res.data[0].id_photo);
-          console.log("res", res.data)
-        } else {
-          navigate("/dashboard/error")
-        }
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  });
+    if (auth !== "") {
+      axios
+        .get("https://onepage-server.com/onepage/basic/", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${auth}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setImage(res.data[0].id_photo);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          navigate("/dashboard/error");
+        });
+    } else {
+      axios
+        .get("https://onepage-server.com/onepage/basic/", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Token ${token}`
+          }
+        })
+        .then((res) => {
+          if (res.data.length === 1) {
+            setImage(res.data[0].id_photo);
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          navigate("/dashboard/error");
+        });
+    }
+  }, []);
 
   return (
     <ProfileImageBox>

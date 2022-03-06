@@ -19,6 +19,7 @@ export const SignIn = () => {
   useEffect(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("userid");
+    localStorage.removeItem("company");
   });
 
   const signinData = () => {
@@ -43,7 +44,13 @@ export const SignIn = () => {
           .then((res) => {
             localStorage.setItem("userid", res.data.id);
             console.log("myself:", res.data);
-            navigate("/dashboard/home");
+            if (res.data["is_company"] == true) {
+              localStorage.setItem("company", "true");
+              navigate("/corporation");
+            } else {
+              navigate("/dashboard/home");
+              localStorage.setItem("company", "false");
+            }
           })
           .catch((err) => {
             console.log(err.response.data);

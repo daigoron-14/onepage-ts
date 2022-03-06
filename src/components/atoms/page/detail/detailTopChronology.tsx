@@ -8,10 +8,11 @@ import { LabelOff } from "@material-ui/icons";
 type TopChronologyType = {
   label: string;
   id: string;
+  auth: string;
 };
 
 export const DetailTopChronology = (props: TopChronologyType) => {
-  const { label, id } = props;
+  const { label, id, auth } = props;
 
   const userid = localStorage.getItem("userid");
   const token = localStorage.getItem("token");
@@ -32,65 +33,126 @@ export const DetailTopChronology = (props: TopChronologyType) => {
   const [chronoText2, setChornoText2] = useState("");
   const [chronoText3, setChornoText3] = useState("");
 
+ 
   useEffect(() => {
-    if (id != "") {
-      if (label === "1") {
-        axios
-          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setChornoImage1(res.data.chrono_image);
-            setChornoTitle1(res.data.chrono_title);
-            setChornoText1(res.data.chrono_containt);
-            setChornoYear1(res.data.chrono_year);
-            setChornoMonth1(res.data.chrono_month);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "2") {
-        axios
-          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setChornoImage2(res.data.chrono_image);
-            setChornoTitle2(res.data.chrono_title);
-            setChornoText2(res.data.chrono_containt);
-            setChornoYear2(res.data.chrono_year);
-            setChornoMonth2(res.data.chrono_month);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
-      } else if (label === "3") {
-        axios
-          .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((res) => {
-            console.log(res.data);
-            setChornoImage3(res.data.chrono_image);
-            setChornoTitle3(res.data.chrono_title);
-            setChornoText3(res.data.chrono_containt);
-            setChornoYear3(res.data.chrono_year);
-            setChornoMonth3(res.data.chrono_month);
-          })
-          .catch((err) => {
-            console.log(err.res.data);
-          });
+    if (auth !== "") {
+      if (id != "") {
+        if (label === "1") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage1(res.data.chrono_image);
+              setChornoTitle1(res.data.chrono_title);
+              setChornoText1(res.data.chrono_containt);
+              setChornoYear1(res.data.chrono_year);
+              setChornoMonth1(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "2") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage2(res.data.chrono_image);
+              setChornoTitle2(res.data.chrono_title);
+              setChornoText2(res.data.chrono_containt);
+              setChornoYear2(res.data.chrono_year);
+              setChornoMonth2(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "3") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${auth}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage3(res.data.chrono_image);
+              setChornoTitle3(res.data.chrono_title);
+              setChornoText3(res.data.chrono_containt);
+              setChornoYear3(res.data.chrono_year);
+              setChornoMonth3(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
+      }
+    } else {
+      if (id != "") {
+        if (label === "1") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage1(res.data.chrono_image);
+              setChornoTitle1(res.data.chrono_title);
+              setChornoText1(res.data.chrono_containt);
+              setChornoYear1(res.data.chrono_year);
+              setChornoMonth1(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "2") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage2(res.data.chrono_image);
+              setChornoTitle2(res.data.chrono_title);
+              setChornoText2(res.data.chrono_containt);
+              setChornoYear2(res.data.chrono_year);
+              setChornoMonth2(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        } else if (label === "3") {
+          axios
+            .get(`https://onepage-server.com/onepage/chrono/${id}/`, {
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+            .then((res) => {
+              console.log(res.data);
+              setChornoImage3(res.data.chrono_image);
+              setChornoTitle3(res.data.chrono_title);
+              setChornoText3(res.data.chrono_containt);
+              setChornoYear3(res.data.chrono_year);
+              setChornoMonth3(res.data.chrono_month);
+            })
+            .catch((err) => {
+              console.log(err.res.data);
+            });
+        }
       }
     }
-  });
+  }, []);
 
   return (
     <TopChronologies>
