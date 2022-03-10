@@ -173,14 +173,14 @@ export const CreatePage = (props: CreatePageType) => {
   return (
     <CreatePageBox>
       <div className="basic">
-        <ProfileImage />
-        <BasicInfromation />
+        <ProfileImage auth=""/>
+        <BasicInfromation auth=""/>
       </div>
       <div className="language">
-        <EnglishSkill title="TOEIC" />
-        <EnglishSkill title="TOEFL" />
-        <LanguageSkill title="第二言語" />
-        <LanguageSkill title="第三言語" />
+        <EnglishSkill title="TOEIC" auth=""/>
+        <EnglishSkill title="TOEFL" auth=""/>
+        <LanguageSkill title="第二言語" auth=""/>
+        <LanguageSkill title="第三言語" auth=""/>
       </div>
       <div className="video">
         {motivRegFlag ? (
