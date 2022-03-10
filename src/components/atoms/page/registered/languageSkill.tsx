@@ -46,7 +46,7 @@ export const LanguageSkill = (props: LanguageSkillType) => {
             if (res.data.length === 1) {
               setLanguage(res.data[0].third_language);
               setLevel(res.data[0].third_level);
-              console.log(.res.data);
+              console.log(res.data);
             }
           })
           .catch((err) => {
