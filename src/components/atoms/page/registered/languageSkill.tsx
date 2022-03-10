@@ -46,6 +46,7 @@ export const LanguageSkill = (props: LanguageSkillType) => {
             if (res.data.length === 1) {
               setLanguage(res.data[0].third_language);
               setLevel(res.data[0].third_level);
+              console.log(.res.data);
             }
           })
           .catch((err) => {
@@ -136,6 +137,13 @@ const LanguageSkills = styled.div`
 
   .language {
     &-level {
+      &-0 {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient( 310deg, rgb(30 32 32 / 75%), rgb(201 201 201 / 75%) );
+        border-radius: 0.75rem;
+      }
+
       &-日常会話レベル {
         width: 100%;
         height: 100%;
